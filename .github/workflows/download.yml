@@ -1,40 +1,73 @@
-name: 🎬 دانلود ویدیو از یوتیوب
+name: 🎬 دانلودر پیشرفته yt-dlp
 
 on:
   workflow_dispatch:
     inputs:
       url:
-        description: 'لینک ویدیو (YouTube, etc.)'
+        description: '🔗 لینک ویدیو'
         required: true
-      format:
-        description: 'کیفیت (best, 1080p, 720p, audio)'
+      format_code:
+        description: '🎛 کد فرمت (مثلاً 140 برای موزیک، یا best)'
         required: false
         default: 'best'
+      output_folder:
+        description: '📁 پوشه خروجی (نسبت به مسیر کاری)'
+        required: false
+        default: 'downloads'
+      write_thumbnail:
+        description: '🖼 دانلود تامنیل به صورت جداگانه؟'
+        type: boolean
+        required: false
+        default: false
+      filename_template:
+        description: '📝 الگوی نام فایل (پیش‌فرض: %(title)s.%(ext)s)'
+        required: false
+        default: '%(title)s.%(ext)s'
 
 jobs:
   download:
     runs-on: ubuntu-latest
     steps:
-      - name: نصب yt-dlp
+      - name: 📦 نصب وابستگی‌ها
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-          pip install yt-dlp
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          pip install -q yt-dlp
 
-      - name: اجرای yt-dlp
+      - name: 🍪 آماده‌سازی کوکی (در صورت وجود)
+        if: ${{ secrets.YT_COOKIES != '' }}
+        run: echo "${{ secrets.YT_COOKIES }}" | base64 -d > cookies.txt
+
+      - name: ⚙️ اجرای yt-dlp با تنظیمات سفارشی
         run: |
-          # خروجی: داخل پوشه‌ای در مسیر کاری
-          mkdir -p output
-          cd output
-          yt-dlp \
-            --format "${{ github.event.inputs.format }}" \
-            --merge-output-format mp4 \
-            --embed-metadata \
-            --output "%(title).150s.%(ext)s" \
-            "${{ github.event.inputs.url }}"
+          # ساخت پوشه خروجی
+          mkdir -p "${{ github.event.inputs.output_folder }}"
 
-      - name: آپلود به عنوان Artifact
+          # گزینه‌های پایه
+          YT_ARGS=(
+            --format "${{ github.event.inputs.format_code }}"
+            --output "${{ github.event.inputs.output_folder }}/${{ github.event.inputs.filename_template }}"
+            --add-metadata
+            --geo-bypass
+            --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            --merge-output-format mkv
+          )
+
+          # اضافه کردن کوکی در صورت وجود
+          if [ -f cookies.txt ]; then
+            YT_ARGS+=(--cookies cookies.txt)
+          fi
+
+          # تامنیل جداگانه
+          if [ "${{ github.event.inputs.write_thumbnail }}" = "true" ]; then
+            YT_ARGS+=(--write-thumbnail)
+          fi
+
+          # اجرای دانلود
+          yt-dlp "${YT_ARGS[@]}" "${{ github.event.inputs.url }}"
+
+      - name: 📤 آپلود خروجی به عنوان Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: downloaded-video
-          path: output/*
+          name: my-downloaded-media
+          path: ${{ github.event.inputs.output_folder }}/*
