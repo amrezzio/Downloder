@@ -1,0 +1,40 @@
+name: 🎬 دانلود ویدیو از یوتیوب
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'لینک ویدیو (YouTube, etc.)'
+        required: true
+      format:
+        description: 'کیفیت (best, 1080p, 720p, audio)'
+        required: false
+        default: 'best'
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: نصب yt-dlp
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          pip install yt-dlp
+
+      - name: اجرای yt-dlp
+        run: |
+          # خروجی: داخل پوشه‌ای در مسیر کاری
+          mkdir -p output
+          cd output
+          yt-dlp \
+            --format "${{ github.event.inputs.format }}" \
+            --merge-output-format mp4 \
+            --embed-metadata \
+            --output "%(title).150s.%(ext)s" \
+            "${{ github.event.inputs.url }}"
+
+      - name: آپلود به عنوان Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: downloaded-video
+          path: output/*
