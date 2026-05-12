@@ -76,24 +76,42 @@ jobs:
       - name: "Checkout repository"
         uses: actions/checkout@v4
 
+      # از اینجا به بعد همه چیز داخل downloads/logs ثبت می‌شود
+      - name: "Prepare log directory"
+        run: mkdir -p downloads/logs
+
       - name: "Install dependencies"
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg zip unzip curl
-          pip install -q "yt-dlp[default]"
-          # Install Deno JS runtime (required by yt-dlp for YouTube extraction)
-          curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh
-          echo "/usr/local/bin" >> $GITHUB_PATH
+          {
+            echo "=== Installing apt packages ==="
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq ffmpeg zip unzip curl
+            echo "=== Installing yt-dlp ==="
+            pip install -q "yt-dlp[default]"
+            echo "=== Installing Deno ==="
+            curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh
+            echo "/usr/local/bin" >> $GITHUB_PATH
+            deno --version
+            echo "=== Dependencies installed ==="
+          } 2>&1 | tee downloads/logs/install.log
 
       - name: "Setup cookies"
         env:
           YT_COOKIES_BASE64: ${{ secrets.YT_COOKIES }}
         run: |
+          > downloads/logs/cookies.log
           if [ -n "$YT_COOKIES_BASE64" ]; then
-            echo "$YT_COOKIES_BASE64" | base64 -d > cookies.txt
-            echo "Cookies file created."
+            set +e
+            echo "$YT_COOKIES_BASE64" | base64 -d > cookies.txt 2>>downloads/logs/cookies.log
+            if [ $? -ne 0 ]; then
+              echo "WARNING: failed to decode cookies base64 – ignoring cookies" | tee -a downloads/logs/cookies.log
+              rm -f cookies.txt
+            else
+              echo "Cookies file created successfully." | tee -a downloads/logs/cookies.log
+            fi
+            set -e
           else
-            echo "No cookies secret set, proceeding without authentication."
+            echo "No cookies secret set, proceeding without authentication." | tee downloads/logs/cookies.log
           fi
 
       # ---------------- SIMULATE MODE ----------------
@@ -121,6 +139,9 @@ jobs:
           else
             echo "Use the IDs from the left column in 'format_code' for your next run." >> "$FOLDER/formats.txt"
           fi
+
+          # ذخیره لاگ شبیه‌سازی
+          cp "$FOLDER/formats.txt" downloads/logs/simulate.log 2>/dev/null || true
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -181,6 +202,9 @@ jobs:
           YT_EXIT=$?
           set -o pipefail
 
+          # کپی لاگ به پوشه logs
+          cp downloads/yt-dlp.log downloads/logs/yt-dlp.log 2>/dev/null || true
+
           VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1 || echo "unknown-video")
           if [ $YT_EXIT -ne 0 ]; then
             echo "Download failed. Check yt-dlp.log for details." > downloads/download-failed.txt
@@ -194,8 +218,9 @@ jobs:
             VIDEO_FOLDER="downloads/${VIDEO_ID}"
             mkdir -p "$VIDEO_FOLDER"
           fi
-          mv -f downloads/yt-dlp.log "$VIDEO_FOLDER/" 2>/dev/null
-          [ -f downloads/download-failed.txt ] && mv downloads/download-failed.txt "$VIDEO_FOLDER/"
+          mv -f downloads/yt-dlp.log "$VIDEO_FOLDER/" 2>/dev/null || true
+          [ -f downloads/download-failed.txt ] && mv downloads/download-failed.txt "$VIDEO_FOLDER/" || true
+          cp "$VIDEO_FOLDER/yt-dlp.log" downloads/logs/yt-dlp.log 2>/dev/null || true
 
       - name: "Compress large main file"
         if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed != 'true' }}
@@ -211,23 +236,19 @@ jobs:
             (cd "$VIDEO_FOLDER" && zip "$ZIPNAME" "$BASENAME" && rm "$BASENAME")
           fi
 
-      - name: "Commit and push"
-        if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed != 'true' }}
+      # ---------------- مرحله نهایی (همیشه اجرا شود و همه چیز را push کند) ----------------
+      - name: "Commit all logs and any output to repository"
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # ensure downloads/logs exists even if completely empty
+          mkdir -p downloads/logs
           git add downloads/
-          git diff --staged --quiet || git commit -m "Download completed: new media in downloads/"
+          git diff --staged --quiet || git commit -m "Workflow finished (success or failure). Logs inside downloads/logs/"
           git pull --rebase origin ${{ github.ref }} || true
           git push origin ${{ github.ref }}
 
-      - name: "Fail workflow if download failed"
-        if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed == 'true' }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add downloads/
-          git diff --staged --quiet || git commit -m "Download failed – see logs in downloads/"
-          git pull --rebase origin ${{ github.ref }} || true
-          git push origin ${{ github.ref }}
-          exit 1
+      - name: "Fail the job if download failed (only after pushing logs)"
+        if: ${{ steps.download_step.outputs.failed == 'true' }}
+        run: exit 1
