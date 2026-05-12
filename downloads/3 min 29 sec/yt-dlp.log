@@ -1,14 +1,14 @@
-[youtube] Extracting URL: https://youtube.com/watch?v=32aNdz5UAxU
-[youtube] 32aNdz5UAxU: Downloading webpage
-[youtube] 32aNdz5UAxU: Downloading tv downgraded player API JSON
-[youtube] 32aNdz5UAxU: Downloading player 8fb635c2-main
+[youtube] Extracting URL: https://youtube.com/watch?v=C1OfbbI849o
+[youtube] C1OfbbI849o: Downloading webpage
+[youtube] C1OfbbI849o: Downloading tv downgraded player API JSON
+[youtube] C1OfbbI849o: Downloading player 8fb635c2-main
 [youtube] [jsc:deno] Solving JS challenges using deno
-[youtube] 32aNdz5UAxU: Downloading m3u8 information
-[info] 32aNdz5UAxU: Downloading 1 format(s): 140
+[youtube] C1OfbbI849o: Downloading m3u8 information
+[info] C1OfbbI849o: Downloading 1 format(s): 140
 [info] There are no subtitles for the requested languages
 [info] Downloading video thumbnail 44 ...
-[info] Writing video thumbnail 44 to: downloads/Alchemilla/Alchemilla.webp
-[download] Destination: downloads/Alchemilla/Alchemilla.m4a
-[download]   0.0% of    3.63MiB at  849.05KiB/s ETA 00:04[download]   0.1% of    3.63MiB at    1.80MiB/s ETA 00:02[download]   0.2% of    3.63MiB at    3.24MiB/s ETA 00:01[download]   0.4% of    3.63MiB at    6.06MiB/s ETA 00:00[download]   0.8% of    3.63MiB at    6.29MiB/s ETA 00:00[download]   1.7% of    3.63MiB at    7.18MiB/s ETA 00:00[download]   3.4% of    3.63MiB at    9.33MiB/s ETA 00:00[download]   6.9% of    3.63MiB at   11.97MiB/s ETA 00:00[download]  13.8% of    3.63MiB at   16.91MiB/s ETA 00:00[download]  27.5% of    3.63MiB at   16.17MiB/s ETA 00:00[download]  55.1% of    3.63MiB at   15.62MiB/s ETA 00:00[download] 100.0% of    3.63MiB at   24.84MiB/s ETA 00:00[download] 100% of    3.63MiB in 00:00:00 at 12.08MiB/s  
-[FixupM4a] Correcting container of "downloads/Alchemilla/Alchemilla.m4a"
-[Metadata] Adding metadata to "downloads/Alchemilla/Alchemilla.m4a"
+[info] Writing video thumbnail 44 to: downloads/LilaS/LilaS.webp
+[download] Destination: downloads/LilaS/LilaS.m4a
+[download]   0.0% of    3.80MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.80MiB at  Unknown B/s ETA Unknown[download]   0.2% of    3.80MiB at    6.60MiB/s ETA 00:00  [download]   0.4% of    3.80MiB at   10.51MiB/s ETA 00:00[download]   0.8% of    3.80MiB at   17.16MiB/s ETA 00:00[download]   1.6% of    3.80MiB at   20.99MiB/s ETA 00:00[download]   3.3% of    3.80MiB at   36.37MiB/s ETA 00:00[download]   6.5% of    3.80MiB at   44.58MiB/s ETA 00:00[download]  13.1% of    3.80MiB at   58.73MiB/s ETA 00:00[download]  26.3% of    3.80MiB at   82.97MiB/s ETA 00:00[download]  52.6% of    3.80MiB at  110.15MiB/s ETA 00:00[download] 100.0% of    3.80MiB at   85.95MiB/s ETA 00:00[download] 100% of    3.80MiB in 00:00:00 at 44.22MiB/s  
+[FixupM4a] Correcting container of "downloads/LilaS/LilaS.m4a"
+[Metadata] Adding metadata to "downloads/LilaS/LilaS.m4a"
