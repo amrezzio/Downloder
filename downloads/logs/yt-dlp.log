@@ -1,14 +1,0 @@
-[youtube] Extracting URL: https://youtube.com/watch?v=C1OfbbI849o
-[youtube] C1OfbbI849o: Downloading webpage
-[youtube] C1OfbbI849o: Downloading tv downgraded player API JSON
-[youtube] C1OfbbI849o: Downloading player 8fb635c2-main
-[youtube] [jsc:deno] Solving JS challenges using deno
-[youtube] C1OfbbI849o: Downloading m3u8 information
-[info] C1OfbbI849o: Downloading 1 format(s): 140
-[info] There are no subtitles for the requested languages
-[info] Downloading video thumbnail 44 ...
-[info] Writing video thumbnail 44 to: downloads/LilaS/LilaS.webp
-[download] Destination: downloads/LilaS/LilaS.m4a
-[download]   0.0% of    3.80MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.80MiB at  Unknown B/s ETA Unknown[download]   0.2% of    3.80MiB at    6.60MiB/s ETA 00:00  [download]   0.4% of    3.80MiB at   10.51MiB/s ETA 00:00[download]   0.8% of    3.80MiB at   17.16MiB/s ETA 00:00[download]   1.6% of    3.80MiB at   20.99MiB/s ETA 00:00[download]   3.3% of    3.80MiB at   36.37MiB/s ETA 00:00[download]   6.5% of    3.80MiB at   44.58MiB/s ETA 00:00[download]  13.1% of    3.80MiB at   58.73MiB/s ETA 00:00[download]  26.3% of    3.80MiB at   82.97MiB/s ETA 00:00[download]  52.6% of    3.80MiB at  110.15MiB/s ETA 00:00[download] 100.0% of    3.80MiB at   85.95MiB/s ETA 00:00[download] 100% of    3.80MiB in 00:00:00 at 44.22MiB/s  
-[FixupM4a] Correcting container of "downloads/LilaS/LilaS.m4a"
-[Metadata] Adding metadata to "downloads/LilaS/LilaS.m4a"
