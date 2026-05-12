@@ -49,7 +49,7 @@ on:
           - '128k'
           - '96k'
       sub_lang:
-        description: 'Subtitle language codes (e.g. en,fa,en,fa or all). Leave empty to skip.'
+        description: 'Subtitle language codes (e.g. en, fa or all). Leave empty to skip.'
         required: false
         default: ''
       embed_subs:
