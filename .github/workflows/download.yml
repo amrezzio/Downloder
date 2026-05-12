@@ -73,6 +73,11 @@ jobs:
     outputs:
       download_failed: ${{ steps.download_step.outputs.failed }}
     steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: "Install dependencies"
         run: |
           sudo apt-get update -qq
@@ -102,12 +107,13 @@ jobs:
             echo "Use the IDs from the left column in 'format_code' for your next run." >> "$FOLDER/formats.txt"
           fi
 
-      - name: "Upload simulation output"
-        if: ${{ github.event.inputs.simulate == 'true' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: simulation-output
-          path: downloads/*
+          # Push simulation results to repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add downloads/
+          git diff --staged --quiet || git commit -m "Simulation: format list for $SAFE_TITLE"
+          git pull --rebase origin ${{ github.ref }} || true
+          git push origin ${{ github.ref }}
 
       # ---------------- ACTUAL DOWNLOAD MODE ----------------
       - name: "Build format string"
@@ -167,7 +173,6 @@ jobs:
             THUMB_FLAG="--write-thumbnail"
           fi
 
-          # Download with error capture
           set +o pipefail
           yt-dlp \
             --format "${{ steps.fmt.outputs.format }}" \
@@ -189,31 +194,51 @@ jobs:
             echo "failed=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: "Split large files into zip parts"
+          # Move log inside the video folder if it exists
+          VIDEO_FOLDER=$(find downloads -mindepth 1 -maxdepth 1 -type d | head -1)
+          if [ -n "$VIDEO_FOLDER" ]; then
+            mv -f downloads/yt-dlp.log "$VIDEO_FOLDER/" 2>/dev/null
+            [ -f downloads/download-failed.txt ] && mv downloads/download-failed.txt "$VIDEO_FOLDER/"
+          fi
+
+      - name: "Compress large main file only"
         if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed != 'true' }}
         run: |
           MAXSIZE_MB=95
           MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
 
-          while IFS= read -r -d '' dir; do
-            SIZE=$(du -sb "$dir" | cut -f1)
-            if [ "$SIZE" -gt "$MAXSIZE_BYTES" ]; then
-              BASE=$(basename "$dir")
-              echo "Folder $BASE exceeds ${MAXSIZE_MB} MB, splitting..."
-              (cd downloads && zip -r -s ${MAXSIZE_MB}m "${BASE}.zip" "$BASE")
-              rm -rf "$dir"
-            fi
-          done < <(find downloads -mindepth 1 -maxdepth 1 -type d -print0)
+          VIDEO_FOLDER=$(find downloads -mindepth 1 -maxdepth 1 -type d | head -1)
+          if [ -z "$VIDEO_FOLDER" ]; then exit 0; fi
 
-      - name: "Upload download output"
-        if: ${{ github.event.inputs.simulate == 'false' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: downloaded-media
-          path: downloads/*
+          # Find the main media file (largest file with common media extensions)
+          MAIN_FILE=$(find "$VIDEO_FOLDER" -type f \( -iname "*.mkv" -o -iname "*.mp4" -o -iname "*.webm" -o -iname "*.m4a" -o -iname "*.opus" -o -iname "*.mp3" \) -print0 | xargs -0 ls -S | head -1)
+          if [ -z "$MAIN_FILE" ]; then exit 0; fi
 
-      - name: "Fail workflow if download failed"
+          SIZE=$(stat -c%s "$MAIN_FILE")
+          if [ "$SIZE" -gt "$MAXSIZE_BYTES" ]; then
+            echo "Main file exceeds ${MAXSIZE_MB} MB, compressing..."
+            BASENAME=$(basename "$MAIN_FILE")
+            ZIPNAME="${BASENAME}.zip"
+            (cd "$VIDEO_FOLDER" && zip -r "$ZIPNAME" "$BASENAME" && rm "$BASENAME")
+          fi
+
+      - name: "Commit and push to repository"
+        if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed != 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add downloads/
+          git diff --staged --quiet || git commit -m "Download completed: new media in downloads/"
+          git pull --rebase origin ${{ github.ref }} || true
+          git push origin ${{ github.ref }}
+
+      - name: "Push failure logs if download failed"
         if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed == 'true' }}
         run: |
-          echo "Download failed. Please check the artifact for error details."
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add downloads/
+          git diff --staged --quiet || git commit -m "Download failed – see logs in downloads/"
+          git pull --rebase origin ${{ github.ref }} || true
+          git push origin ${{ github.ref }}
           exit 1
