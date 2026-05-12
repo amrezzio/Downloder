@@ -1,4 +1,4 @@
-name: "دانلودر پیشرفته yt‑dlp"
+name: "دانلودر پیشرفته yt-dlp"
 
 on:
   workflow_dispatch:
@@ -15,10 +15,10 @@ on:
         description: 'نوع دانلود'
         required: true
         type: choice
-        default: 'video+audio'
+        default: 'ویدیو+صوت'
         options:
-          - 'audio_only'
-          - 'video+audio'
+          - 'فقط صوت'
+          - 'ویدیو+صوت'
       format_code:
         description: 'کد فرمت سفارشی (در صورت وارد شدن، تنظیمات کیفیت نادیده گرفته می‌شود)'
         required: false
@@ -27,9 +27,9 @@ on:
         description: 'حداکثر رزولوشن ویدیو (خالی = بهترین)'
         required: false
         type: choice
-        default: ''
+        default: 'بهترین'
         options:
-          - ''
+          - 'بهترین'
           - '2160p'
           - '1440p'
           - '1080p'
@@ -40,16 +40,16 @@ on:
         description: 'حداکثر بیتریت صدا (خالی = بهترین)'
         required: false
         type: choice
-        default: ''
+        default: 'بهترین'
         options:
-          - ''
+          - 'بهترین'
           - '320k'
           - '256k'
           - '192k'
           - '128k'
           - '96k'
       sub_lang:
-        description: 'کد(های) زبان زیرنویس (مثال: fa, en,fa یا all). خالی بگذارید تا از زیرنویس صرف‌نظر شود'
+        description: 'کد(های) زبان زیرنویس (مثال: en,fa,en,fa یا all). خالی بگذارید تا از زیرنویس صرف‌نظر شود'
         required: false
         default: ''
       embed_subs:
@@ -58,7 +58,7 @@ on:
         required: false
         default: false
       write_thumbnail:
-        description: 'کاور (عکس) جداگانه در کنار ویدیو ذخیره شود'
+        description: 'ذخیره تصویر بندانگشتی جداگانه'
         type: boolean
         required: false
         default: false
@@ -70,12 +70,48 @@ on:
 jobs:
   download:
     runs-on: ubuntu-latest
+    outputs:
+      download_failed: ${{ steps.download_step.outputs.failed }}
     steps:
+      - name: "دریافت مخزن"
+        uses: actions/checkout@v4
+
+      - name: "آماده‌سازی پوشه لاگ"
+        run: mkdir -p downloads/logs
+
       - name: "نصب پیش‌نیازها"
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg zip
-          pip install -q yt-dlp
+          {
+            echo "=== نصب بسته‌های apt ==="
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq ffmpeg zip unzip curl
+            echo "=== نصب yt-dlp ==="
+            pip install -q "yt-dlp[default]"
+            echo "=== نصب Deno ==="
+            curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh
+            echo "/usr/local/bin" >> $GITHUB_PATH
+            deno --version
+            echo "=== نصب پیش‌نیازها کامل شد ==="
+          } 2>&1 | tee downloads/logs/install.log
+
+      - name: "تنظیم کوکی"
+        env:
+          YT_COOKIES_BASE64: ${{ secrets.YT_COOKIES }}
+        run: |
+          > downloads/logs/cookies.log
+          if [ -n "$YT_COOKIES_BASE64" ]; then
+            set +e
+            echo "$YT_COOKIES_BASE64" | base64 -d > cookies.txt 2>>downloads/logs/cookies.log
+            if [ $? -ne 0 ]; then
+              echo "هشدار: خطا در رمزگشایی کوکی - کوکی نادیده گرفته شد" | tee -a downloads/logs/cookies.log
+              rm -f cookies.txt
+            else
+              echo "فایل کوکی با موفقیت ساخته شد." | tee -a downloads/logs/cookies.log
+            fi
+            set -e
+          else
+            echo "هیچ کوکی‌ای تنظیم نشده است، دانلود بدون احراز هویت ادامه می‌یابد." | tee downloads/logs/cookies.log
+          fi
 
       # ---------------- حالت شبیه‌سازی ----------------
       - name: "شبیه‌سازی: نمایش فرمت‌های موجود"
@@ -83,110 +119,141 @@ jobs:
         run: |
           mkdir -p downloads
           URL="${{ github.event.inputs.url }}"
-          TITLE=$(yt-dlp --print title "$URL" 2>/dev/null || echo "shabih-sazi")
-          SAFE_TITLE=$(echo "$TITLE" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
+          VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1 || echo "unknown-video")
+          COOKIES_ARG=""
+          [ -f cookies.txt ] && COOKIES_ARG="--cookies cookies.txt"
+
+          set +o pipefail
+          TITLE=$(yt-dlp --print title $COOKIES_ARG "$URL" 2>/dev/null || echo "")
+          SAFE_TITLE=$(echo "${TITLE:-$VIDEO_ID}" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
           FOLDER="downloads/${SAFE_TITLE}"
           mkdir -p "$FOLDER"
-          echo "فرمت‌های موجود برای: $URL" | tee "$FOLDER/formats.txt"
-          echo "======================================================" | tee -a "$FOLDER/formats.txt"
-          yt-dlp -F "$URL" 2>&1 | tee -a "$FOLDER/formats.txt"
-          echo "" | tee -a "$FOLDER/formats.txt"
-          echo "از شناسه‌های ستون چپ به‌عنوان کد فرمت در اجرای بعدی استفاده کنید." | tee -a "$FOLDER/formats.txt"
 
-      - name: "بارگذاری خروجی شبیه‌سازی"
-        if: ${{ github.event.inputs.simulate == 'true' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: simulation-output
-          path: downloads/*
+          yt-dlp -F $COOKIES_ARG "$URL" 2>&1 | tee "$FOLDER/formats.txt"
+          YT_EXIT=$?
+          set -o pipefail
+
+          if [ $YT_EXIT -ne 0 ]; then
+            echo "خطا: yt-dlp نتوانست لیست فرمت‌ها را دریافت کند." | tee -a "$FOLDER/formats.txt"
+          else
+            echo "از شناسه‌های ستون چپ به‌عنوان کد فرمت در اجرای بعدی استفاده کنید." >> "$FOLDER/formats.txt"
+          fi
+
+          cp "$FOLDER/formats.txt" downloads/logs/simulate.log 2>/dev/null || true
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add downloads/
+          git diff --staged --quiet || git commit -m "شبیه‌سازی: لیست فرمت‌ها برای $SAFE_TITLE"
+          git pull --rebase origin ${{ github.ref }} || true
+          git push origin ${{ github.ref }}
 
       # ---------------- حالت دانلود واقعی ----------------
       - name: "ساخت رشته فرمت"
         id: fmt
         if: ${{ github.event.inputs.simulate == 'false' }}
         run: |
+          # ترجمه گزینه‌های فارسی به مقادیر انگلیسی
           TYPE="${{ github.event.inputs.download_type }}"
+          if [ "$TYPE" = "فقط صوت" ]; then TYPE="audio_only"; else TYPE="video+audio"; fi
+
           FMT_CODE="${{ github.event.inputs.format_code }}"
           VQ="${{ github.event.inputs.video_quality }}"
           AQ="${{ github.event.inputs.audio_quality }}"
 
-          if [ -n "$FMT_CODE" ]; then
-            echo "format=$FMT_CODE" >> $GITHUB_OUTPUT
-            exit 0
-          fi
+          # ترجمه رزولوشن و بیتریت
+          if [ "$VQ" = "بهترین" ]; then VQ=""; fi
+          if [ "$AQ" = "بهترین" ]; then AQ=""; fi
+
+          if [ -n "$FMT_CODE" ]; then echo "format=$FMT_CODE" >> $GITHUB_OUTPUT; exit 0; fi
 
           abr_filter() {
             local q="$1"
-            if [ -z "$q" ] || [ "$q" = "best" ]; then
-              echo "bestaudio/best"
-            else
-              local num="${q%k}"
-              echo "bestaudio[abr<=${num}]/bestaudio/best"
-            fi
+            if [ -z "$q" ] || [ "$q" = "best" ]; then echo "bestaudio/best"
+            else echo "bestaudio[abr<=${q%k}]/bestaudio/best"; fi
           }
 
-          if [ "$TYPE" = "audio_only" ]; then
-            F=$(abr_filter "$AQ")
+          if [ "$TYPE" = "audio_only" ]; then F=$(abr_filter "$AQ")
           else
-            if [ -z "$VQ" ] || [ "$VQ" = "best" ]; then
-              VID="bestvideo"
-            else
-              height="${VQ%p}"
-              VID="bestvideo[height<=${height}]"
-            fi
+            if [ -z "$VQ" ] || [ "$VQ" = "best" ]; then VID="bestvideo"; else VID="bestvideo[height<=${VQ%p}]"; fi
             AUD=$(abr_filter "$AQ")
             F="${VID}+${AUD}/${VID}+bestaudio/bestvideo+bestaudio/best"
           fi
           echo "format=${F}" >> $GITHUB_OUTPUT
 
-      - name: "دانلود با yt‑dlp"
+      - name: "دانلود با yt-dlp"
+        id: download_step
         if: ${{ github.event.inputs.simulate == 'false' }}
         run: |
           mkdir -p downloads
+          URL="${{ github.event.inputs.url }}"
+          COOKIES_ARG=""; [ -f cookies.txt ] && COOKIES_ARG="--cookies cookies.txt"
 
           SUBS_ARGS=""
           if [ -n "${{ github.event.inputs.sub_lang }}" ]; then
             SUBS_ARGS="--write-subs --sub-lang ${{ github.event.inputs.sub_lang }}"
-            if [ "${{ github.event.inputs.embed_subs }}" = "true" ]; then
-              SUBS_ARGS="$SUBS_ARGS --embed-subs"
-            fi
+            [ "${{ github.event.inputs.embed_subs }}" = "true" ] && SUBS_ARGS="$SUBS_ARGS --embed-subs"
           fi
 
-          THUMB_FLAG=""
-          if [ "${{ github.event.inputs.write_thumbnail }}" = "true" ]; then
-            THUMB_FLAG="--write-thumbnail"
-          fi
+          THUMB_FLAG="";
+          [ "${{ github.event.inputs.write_thumbnail }}" = "true" ] && THUMB_FLAG="--write-thumbnail"
 
+          set +o pipefail
           yt-dlp \
             --format "${{ steps.fmt.outputs.format }}" \
             --output "downloads/%(title)s/${{ github.event.inputs.filename_template }}" \
-            --add-metadata \
-            --geo-bypass \
+            --add-metadata --geo-bypass \
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
             --merge-output-format mkv \
-            $SUBS_ARGS \
-            $THUMB_FLAG \
-            "${{ github.event.inputs.url }}"
+            $COOKIES_ARG $SUBS_ARGS $THUMB_FLAG \
+            "$URL" 2>&1 | tee downloads/yt-dlp.log
+          YT_EXIT=$?
+          set -o pipefail
 
-      - name: "تقسیم فایل‌های حجیم به بخش‌های زیپ"
-        if: ${{ github.event.inputs.simulate == 'false' }}
+          cp downloads/yt-dlp.log downloads/logs/yt-dlp.log 2>/dev/null || true
+
+          VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1 || echo "unknown-video")
+          if [ $YT_EXIT -ne 0 ]; then
+            echo "دانلود ناموفق بود. جزئیات در yt-dlp.log قابل مشاهده است." > downloads/download-failed.txt
+            echo "failed=true" >> $GITHUB_OUTPUT
+          else
+            echo "failed=false" >> $GITHUB_OUTPUT
+          fi
+
+          VIDEO_FOLDER=$(find downloads -mindepth 1 -maxdepth 1 -type d | head -1)
+          if [ -z "$VIDEO_FOLDER" ]; then
+            VIDEO_FOLDER="downloads/${VIDEO_ID}"
+            mkdir -p "$VIDEO_FOLDER"
+          fi
+          mv -f downloads/yt-dlp.log "$VIDEO_FOLDER/" 2>/dev/null || true
+          [ -f downloads/download-failed.txt ] && mv downloads/download-failed.txt "$VIDEO_FOLDER/" || true
+          cp "$VIDEO_FOLDER/yt-dlp.log" downloads/logs/yt-dlp.log 2>/dev/null || true
+
+      - name: "فشرده‌سازی فایل حجیم اصلی"
+        if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed != 'true' }}
         run: |
-          MAXSIZE_MB=95
-          MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
+          MAXSIZE_MB=95; MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
+          VIDEO_FOLDER=$(find downloads -mindepth 1 -maxdepth 1 -type d | head -1)
+          [ -z "$VIDEO_FOLDER" ] && exit 0
+          MAIN_FILE=$(find "$VIDEO_FOLDER" -type f \( -iname "*.mkv" -o -iname "*.mp4" -o -iname "*.webm" -o -iname "*.m4a" -o -iname "*.opus" -o -iname "*.mp3" \) -print0 | xargs -0 ls -S | head -1)
+          [ -z "$MAIN_FILE" ] && exit 0
+          SIZE=$(stat -c%s "$MAIN_FILE")
+          if [ "$SIZE" -gt "$MAXSIZE_BYTES" ]; then
+            BASENAME=$(basename "$MAIN_FILE"); ZIPNAME="${BASENAME}.zip"
+            (cd "$VIDEO_FOLDER" && zip "$ZIPNAME" "$BASENAME" && rm "$BASENAME")
+          fi
 
-          while IFS= read -r -d '' dir; do
-            SIZE=$(du -sb "$dir" | cut -f1)
-            if [ "$SIZE" -gt "$MAXSIZE_BYTES" ]; then
-              BASE=$(basename "$dir")
-              echo "پوشه $BASE بیشتر از ${MAXSIZE_MB} مگابایت است، تقسیم می‌شود..."
-              (cd downloads && zip -r -s ${MAXSIZE_MB}m "${BASE}.zip" "$BASE")
-              rm -rf "$dir"
-            fi
-          done < <(find downloads -mindepth 1 -maxdepth 1 -type d -print0)
+      - name: "ثبت و ارسال تمام لاگ‌ها و خروجی‌ها به مخزن"
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p downloads/logs
+          git add downloads/
+          git diff --staged --quiet || git commit -m "پایان گردش کار (موفق یا ناموفق). لاگ‌ها در downloads/logs/"
+          git pull --rebase origin ${{ github.ref }} || true
+          git push origin ${{ github.ref }}
 
-      - name: "بارگذاری خروجی دانلود"
-        if: ${{ github.event.inputs.simulate == 'false' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: downloaded-media
-          path: downloads/*
+      - name: "اعلام شکست در صورت دانلود ناموفق"
+        if: ${{ steps.download_step.outputs.failed == 'true' }}
+        run: exit 1
