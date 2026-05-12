@@ -1,26 +1,55 @@
-name: 🎬 دانلودر پیشرفته yt-dlp
+name: "Advanced yt-dlp Downloader"
 
 on:
   workflow_dispatch:
     inputs:
       url:
-        description: '🔗 لینک ویدیو'
+        description: 'Video/Playlist URL'
         required: true
+      download_type:
+        description: 'Download type'
+        required: true
+        type: choice
+        default: 'video+audio'
+        options:
+          - 'audio_only'
+          - 'video+audio'
       format_code:
-        description: '🎛 کد فرمت (مثلاً 140 برای موزیک، یا best)'
+        description: 'Custom format code (overrides quality fields if set)'
         required: false
-        default: 'best'
-      output_folder:
-        description: '📁 پوشه خروجی (نسبت به مسیر کاری)'
+        default: ''
+      video_quality:
+        description: 'Max video height (leave empty for best)'
         required: false
-        default: 'downloads'
+        type: choice
+        default: ''
+        options:
+          - ''
+          - '2160p'
+          - '1440p'
+          - '1080p'
+          - '720p'
+          - '480p'
+          - '360p'
+      audio_quality:
+        description: 'Max audio bitrate (leave empty for best)'
+        required: false
+        type: choice
+        default: ''
+        options:
+          - ''
+          - '320k'
+          - '256k'
+          - '192k'
+          - '128k'
+          - '96k'
       write_thumbnail:
-        description: '🖼 دانلود تامنیل به صورت جداگانه؟'
+        description: 'Save thumbnail as separate file'
         type: boolean
         required: false
         default: false
       filename_template:
-        description: '📝 الگوی نام فایل (پیش‌فرض: %(title)s.%(ext)s)'
+        description: 'Filename template (e.g. %(title)s.%(ext)s)'
         required: false
         default: '%(title)s.%(ext)s'
 
@@ -28,46 +57,93 @@ jobs:
   download:
     runs-on: ubuntu-latest
     steps:
-      - name: 📦 نصب وابستگی‌ها
+      - name: "Install dependencies"
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg
+          sudo apt-get install -y -qq ffmpeg zip
           pip install -q yt-dlp
 
-      - name: 🍪 آماده‌سازی کوکی (در صورت وجود)
+      - name: "Prepare cookies (optional)"
         if: ${{ secrets.YT_COOKIES != '' }}
         run: echo "${{ secrets.YT_COOKIES }}" | base64 -d > cookies.txt
 
-      - name: ⚙️ اجرای yt-dlp با تنظیمات سفارشی
+      - name: "Build format string"
+        id: fmt
         run: |
-          # ساخت پوشه خروجی
-          mkdir -p "${{ github.event.inputs.output_folder }}"
+          TYPE="${{ github.event.inputs.download_type }}"
+          FMT_CODE="${{ github.event.inputs.format_code }}"
+          VQ="${{ github.event.inputs.video_quality }}"
+          AQ="${{ github.event.inputs.audio_quality }}"
 
-          # گزینه‌های پایه
+          if [ -n "$FMT_CODE" ]; then
+            echo "format=$FMT_CODE" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # audio bitrate helper
+          abr_filter() {
+            local q="$1"
+            if [ -z "$q" ] || [ "$q" = "best" ]; then
+              echo "bestaudio/best"
+            else
+              local num="${q%k}"
+              echo "bestaudio[abr<=${num}]/bestaudio/best"
+            fi
+          }
+
+          if [ "$TYPE" = "audio_only" ]; then
+            F=$(abr_filter "$AQ")
+          else
+            # video+audio
+            if [ -z "$VQ" ] || [ "$VQ" = "best" ]; then
+              VID="bestvideo"
+            else
+              height="${VQ%p}"
+              VID="bestvideo[height<=${height}]"
+            fi
+            AUD=$(abr_filter "$AQ")
+            F="${VID}+${AUD}/${VID}+bestaudio/bestvideo+bestaudio/best"
+          fi
+          echo "format=${F}" >> $GITHUB_OUTPUT
+
+      - name: "Download with yt-dlp"
+        run: |
+          mkdir -p downloads
           YT_ARGS=(
-            --format "${{ github.event.inputs.format_code }}"
-            --output "${{ github.event.inputs.output_folder }}/${{ github.event.inputs.filename_template }}"
+            --format "${{ steps.fmt.outputs.format }}"
+            --output "downloads/%(title)s/${{ github.event.inputs.filename_template }}"
             --add-metadata
             --geo-bypass
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
             --merge-output-format mkv
           )
-
-          # اضافه کردن کوکی در صورت وجود
           if [ -f cookies.txt ]; then
             YT_ARGS+=(--cookies cookies.txt)
           fi
-
-          # تامنیل جداگانه
           if [ "${{ github.event.inputs.write_thumbnail }}" = "true" ]; then
             YT_ARGS+=(--write-thumbnail)
           fi
-
-          # اجرای دانلود
           yt-dlp "${YT_ARGS[@]}" "${{ github.event.inputs.url }}"
 
-      - name: 📤 آپلود خروجی به عنوان Artifact
+      - name: "Split large files into zip parts"
+        run: |
+          MAXSIZE_MB=95   # threshold in MB
+          MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
+
+          # find the downloaded folder(s)
+          while IFS= read -r -d '' dir; do
+            # total size of this folder (including thumbnail if present)
+            SIZE=$(du -sb "$dir" | cut -f1)
+            if [ "$SIZE" -gt "$MAXSIZE_BYTES" ]; then
+              BASE=$(basename "$dir")
+              echo "Folder $BASE exceeds ${MAXSIZE_MB} MB, splitting..."
+              (cd downloads && zip -r -s ${MAXSIZE_MB}m "${BASE}.zip" "$BASE")
+              rm -rf "$dir"
+            fi
+          done < <(find downloads -mindepth 1 -maxdepth 1 -type d -print0)
+
+      - name: "Upload output"
         uses: actions/upload-artifact@v4
         with:
-          name: my-downloaded-media
-          path: ${{ github.event.inputs.output_folder }}/*
+          name: downloaded-media
+          path: downloads/*
