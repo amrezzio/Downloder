@@ -6,6 +6,11 @@ on:
       url:
         description: 'Video/Playlist URL'
         required: true
+      simulate:
+        description: 'Simulate only (list available formats, no download)'
+        type: boolean
+        required: false
+        default: false
       download_type:
         description: 'Download type'
         required: true
@@ -43,6 +48,15 @@ on:
           - '192k'
           - '128k'
           - '96k'
+      sub_lang:
+        description: 'Subtitle language codes (e.g. en,fa,en,fa or all). Leave empty to skip.'
+        required: false
+        default: ''
+      embed_subs:
+        description: 'Embed subtitles into the video (only if subs are downloaded)'
+        type: boolean
+        required: false
+        default: false
       write_thumbnail:
         description: 'Save thumbnail as separate file'
         type: boolean
@@ -63,8 +77,28 @@ jobs:
           sudo apt-get install -y -qq ffmpeg zip
           pip install -q yt-dlp
 
+      # ---------------- SIMULATE MODE ----------------
+      - name: "Simulate: List available formats"
+        if: ${{ github.event.inputs.simulate == 'true' }}
+        run: |
+          mkdir -p simulation-output
+          echo "Listing formats for: ${{ github.event.inputs.url }}" > simulation-output/formats.txt
+          echo "======================================================" >> simulation-output/formats.txt
+          yt-dlp -F "${{ github.event.inputs.url }}" >> simulation-output/formats.txt 2>&1
+          echo "" >> simulation-output/formats.txt
+          echo "Use the IDs from the left column in 'format_code' for your next run." >> simulation-output/formats.txt
+
+      - name: "Upload simulation result"
+        if: ${{ github.event.inputs.simulate == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: format-list
+          path: simulation-output/formats.txt
+
+      # ---------------- ACTUAL DOWNLOAD MODE ----------------
       - name: "Build format string"
         id: fmt
+        if: ${{ github.event.inputs.simulate == 'false' }}
         run: |
           TYPE="${{ github.event.inputs.download_type }}"
           FMT_CODE="${{ github.event.inputs.format_code }}"
@@ -103,8 +137,25 @@ jobs:
           echo "format=${F}" >> $GITHUB_OUTPUT
 
       - name: "Download with yt-dlp"
+        if: ${{ github.event.inputs.simulate == 'false' }}
         run: |
           mkdir -p downloads
+
+          # Build additional arguments for subtitles
+          SUBS_ARGS=""
+          if [ -n "${{ github.event.inputs.sub_lang }}" ]; then
+            SUBS_ARGS="--write-subs --sub-lang ${{ github.event.inputs.sub_lang }}"
+            if [ "${{ github.event.inputs.embed_subs }}" = "true" ]; then
+              SUBS_ARGS="$SUBS_ARGS --embed-subs"
+            fi
+          fi
+
+          # Thumbnail flag
+          THUMB_FLAG=""
+          if [ "${{ github.event.inputs.write_thumbnail }}" = "true" ]; then
+            THUMB_FLAG="--write-thumbnail"
+          fi
+
           yt-dlp \
             --format "${{ steps.fmt.outputs.format }}" \
             --output "downloads/%(title)s/${{ github.event.inputs.filename_template }}" \
@@ -112,10 +163,12 @@ jobs:
             --geo-bypass \
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
             --merge-output-format mkv \
-            ${{ github.event.inputs.write_thumbnail == 'true' && '--write-thumbnail' || '' }} \
+            $SUBS_ARGS \
+            $THUMB_FLAG \
             "${{ github.event.inputs.url }}"
 
       - name: "Split large files into zip parts"
+        if: ${{ github.event.inputs.simulate == 'false' }}
         run: |
           MAXSIZE_MB=95
           MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
@@ -130,7 +183,8 @@ jobs:
             fi
           done < <(find downloads -mindepth 1 -maxdepth 1 -type d -print0)
 
-      - name: "Upload output"
+      - name: "Upload download output"
+        if: ${{ github.event.inputs.simulate == 'false' }}
         uses: actions/upload-artifact@v4
         with:
           name: downloaded-media
