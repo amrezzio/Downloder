@@ -15,7 +15,7 @@ on:
         description: 'Download type'
         required: true
         type: choice
-        default: 'video+audio'
+        default: 'video + audio'
         options:
           - 'audio only'
           - 'video + audio'
@@ -27,7 +27,7 @@ on:
         description: 'Max video quality'
         required: false
         type: choice
-        default: ''
+        default: 'best'
         options:
           - 'best'
           - '2160p'
@@ -40,7 +40,7 @@ on:
         description: 'Max audio bitrate'
         required: false
         type: choice
-        default: ''
+        default: 'best'
         options:
           - 'best'
           - '320k'
@@ -138,7 +138,6 @@ jobs:
             echo "Use the IDs from the left column in 'format_code' for your next run." >> "$FOLDER/formats.txt"
           fi
 
-          # ذخیره لاگ شبیه‌سازی
           cp "$FOLDER/formats.txt" downloads/logs/simulate.log 2>/dev/null || true
 
           git config user.name "github-actions[bot]"
@@ -152,16 +151,26 @@ jobs:
         id: fmt
         if: ${{ github.event.inputs.simulate == 'false' }}
         run: |
+          # Translate display values to internal codes
           TYPE="${{ github.event.inputs.download_type }}"
+          if [ "$TYPE" = "audio only" ]; then TYPE="audio_only"; else TYPE="video+audio"; fi
+
           FMT_CODE="${{ github.event.inputs.format_code }}"
           VQ="${{ github.event.inputs.video_quality }}"
           AQ="${{ github.event.inputs.audio_quality }}"
+
+          # Empty or best both mean best
+          if [ -z "$VQ" ] || [ "$VQ" = "best" ]; then VQ=""; fi
+          if [ -z "$AQ" ] || [ "$AQ" = "best" ]; then AQ=""; fi
+
           if [ -n "$FMT_CODE" ]; then echo "format=$FMT_CODE" >> $GITHUB_OUTPUT; exit 0; fi
+
           abr_filter() {
             local q="$1"
             if [ -z "$q" ] || [ "$q" = "best" ]; then echo "bestaudio/best"
             else echo "bestaudio[abr<=${q%k}]/bestaudio/best"; fi
           }
+
           if [ "$TYPE" = "audio_only" ]; then F=$(abr_filter "$AQ")
           else
             if [ -z "$VQ" ] || [ "$VQ" = "best" ]; then VID="bestvideo"; else VID="bestvideo[height<=${VQ%p}]"; fi
@@ -199,7 +208,6 @@ jobs:
           YT_EXIT=$?
           set -o pipefail
 
-          # کپی لاگ به پوشه logs
           cp downloads/yt-dlp.log downloads/logs/yt-dlp.log 2>/dev/null || true
 
           VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1 || echo "unknown-video")
@@ -233,13 +241,11 @@ jobs:
             (cd "$VIDEO_FOLDER" && zip "$ZIPNAME" "$BASENAME" && rm "$BASENAME")
           fi
 
-
       - name: "Commit all logs and any output to repository"
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # ensure downloads/logs exists even if completely empty
           mkdir -p downloads/logs
           git add downloads/
           git diff --staged --quiet || git commit -m "Workflow finished (success or failure). Logs inside downloads/logs/"
