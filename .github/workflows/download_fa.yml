@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       url:
-        description: 'لینک ویدیو / لیست پخش'
+        description: 'لینک ویدیو | لیست پخش'
         required: true
       simulate:
         description: 'فقط شبیه‌سازی (نمایش فرمت‌های موجود بدون دانلود)'
@@ -15,16 +15,16 @@ on:
         description: 'نوع دانلود'
         required: true
         type: choice
-        default: 'ویدیو+صوت'
+        default: 'ویدیو + صدا'
         options:
-          - 'فقط صوت'
-          - 'ویدیو+صوت'
+          - 'فقط صدا'
+          - 'ویدیو + صدا'
       format_code:
         description: 'کد فرمت سفارشی (در صورت وارد شدن، تنظیمات کیفیت نادیده گرفته می‌شود)'
         required: false
         default: ''
       video_quality:
-        description: 'حداکثر رزولوشن ویدیو (خالی = بهترین)'
+        description: 'حداکثر کیفیت ویدیو'
         required: false
         type: choice
         default: 'بهترین'
@@ -37,7 +37,7 @@ on:
           - '480p'
           - '360p'
       audio_quality:
-        description: 'حداکثر بیتریت صدا (خالی = بهترین)'
+        description: 'حداکثر بیتریت صدا'
         required: false
         type: choice
         default: 'بهترین'
@@ -49,7 +49,7 @@ on:
           - '128k'
           - '96k'
       sub_lang:
-        description: 'کد(های) زبان زیرنویس (مثال: en,fa,en,fa یا all). خالی بگذارید تا از زیرنویس صرف‌نظر شود'
+        description: '‫کد های زبان زیرنویس (مثال: en, fa یا all). خالی بگذارید تا از زیرنویس صرف‌نظر شود'
         required: false
         default: ''
       embed_subs:
@@ -58,12 +58,12 @@ on:
         required: false
         default: false
       write_thumbnail:
-        description: 'ذخیره تصویر بندانگشتی جداگانه'
+        description: 'ذخیره تامنیل (کاور) به طور جدا'
         type: boolean
         required: false
         default: false
       filename_template:
-        description: 'الگوی نام فایل (پیش‌فرض: %(title)s.%(ext)s)'
+        description: '‫الگوی نام فایل (پیش‌فرض: %(title)s.%(ext)s)'
         required: false
         default: '%(title)s.%(ext)s'
 
