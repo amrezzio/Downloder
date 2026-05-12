@@ -86,8 +86,15 @@ jobs:
           echo "/usr/local/bin" >> $GITHUB_PATH
 
       - name: "Setup cookies"
-        if: ${{ secrets.YT_COOKIES != '' }}
-        run: echo "${{ secrets.YT_COOKIES }}" | base64 -d > cookies.txt
+        env:
+          YT_COOKIES_BASE64: ${{ secrets.YT_COOKIES }}
+        run: |
+          if [ -n "$YT_COOKIES_BASE64" ]; then
+            echo "$YT_COOKIES_BASE64" | base64 -d > cookies.txt
+            echo "Cookies file created."
+          else
+            echo "No cookies secret set, proceeding without authentication."
+          fi
 
       # ---------------- SIMULATE MODE ----------------
       - name: "Simulate: List available formats"
