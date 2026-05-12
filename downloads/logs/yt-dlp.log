@@ -1,14 +1,14 @@
-[youtube] Extracting URL: https://youtube.com/watch?v=Sdy5fSHz6t4
-[youtube] Sdy5fSHz6t4: Downloading webpage
-[youtube] Sdy5fSHz6t4: Downloading tv downgraded player API JSON
-[youtube] Sdy5fSHz6t4: Downloading player 8fb635c2-main
+[youtube] Extracting URL: https://youtube.com/watch?v=0s93gfmrD9I
+[youtube] 0s93gfmrD9I: Downloading webpage
+[youtube] 0s93gfmrD9I: Downloading tv downgraded player API JSON
+[youtube] 0s93gfmrD9I: Downloading player 8fb635c2-main
 [youtube] [jsc:deno] Solving JS challenges using deno
-[youtube] Sdy5fSHz6t4: Downloading m3u8 information
-[info] Sdy5fSHz6t4: Downloading 1 format(s): 140
+[youtube] 0s93gfmrD9I: Downloading m3u8 information
+[info] 0s93gfmrD9I: Downloading 1 format(s): 140
 [info] There are no subtitles for the requested languages
 [info] Downloading video thumbnail 44 ...
-[info] Writing video thumbnail 44 to: downloads/kyoukaisen/kyoukaisen.webp
-[download] Destination: downloads/kyoukaisen/kyoukaisen.m4a
-[download]   0.0% of    4.54MiB at  171.83KiB/s ETA 00:27[download]   0.1% of    4.54MiB at  470.07KiB/s ETA 00:09[download]   0.2% of    4.54MiB at    1.00MiB/s ETA 00:04[download]   0.3% of    4.54MiB at    2.05MiB/s ETA 00:02[download]   0.7% of    4.54MiB at  442.77KiB/s ETA 00:10[download]   1.4% of    4.54MiB at  505.19KiB/s ETA 00:09[download]   2.7% of    4.54MiB at  683.58KiB/s ETA 00:06[download]   5.5% of    4.54MiB at  967.35KiB/s ETA 00:04[download]  11.0% of    4.54MiB at    1.42MiB/s ETA 00:02[download]  22.0% of    4.54MiB at    2.17MiB/s ETA 00:01[download]  44.1% of    4.54MiB at    3.46MiB/s ETA 00:00[download]  88.1% of    4.54MiB at    5.72MiB/s ETA 00:00[download] 100.0% of    4.54MiB at    6.31MiB/s ETA 00:00[download] 100% of    4.54MiB in 00:00:00 at 4.71MiB/s   
-[FixupM4a] Correcting container of "downloads/kyoukaisen/kyoukaisen.m4a"
-[Metadata] Adding metadata to "downloads/kyoukaisen/kyoukaisen.m4a"
+[info] Writing video thumbnail 44 to: downloads/Avid/Avid.webp
+[download] Destination: downloads/Avid/Avid.m4a
+[download]   0.0% of    3.85MiB at  256.99KiB/s ETA 00:15[download]   0.1% of    3.85MiB at  670.77KiB/s ETA 00:05[download]   0.2% of    3.85MiB at    1.34MiB/s ETA 00:02[download]   0.4% of    3.85MiB at    2.70MiB/s ETA 00:01[download]   0.8% of    3.85MiB at  661.63KiB/s ETA 00:05[download]   1.6% of    3.85MiB at  715.73KiB/s ETA 00:05[download]   3.2% of    3.85MiB at  996.47KiB/s ETA 00:03[download]   6.5% of    3.85MiB at    1.40MiB/s ETA 00:02[download]  13.0% of    3.85MiB at    2.01MiB/s ETA 00:01[download]  26.0% of    3.85MiB at    3.23MiB/s ETA 00:00[download]  52.0% of    3.85MiB at    5.13MiB/s ETA 00:00[download] 100.0% of    3.85MiB at    8.21MiB/s ETA 00:00[download] 100% of    3.85MiB in 00:00:00 at 5.97MiB/s   
+[FixupM4a] Correcting container of "downloads/Avid/Avid.m4a"
+[Metadata] Adding metadata to "downloads/Avid/Avid.m4a"
