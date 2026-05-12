@@ -2,7 +2,7 @@ name: "Auto-Update YouTube Cookies"
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *'   # هر 24 ساعت یکبار
   workflow_dispatch:
 
 jobs:
@@ -23,11 +23,10 @@ jobs:
           EMAIL: ${{ secrets.YT_DUMMY_EMAIL }}
           PASSWORD: ${{ secrets.YT_DUMMY_PASSWORD }}
         run: |
+          mkdir -p downloads/logs
           python << 'EOF' 2>&1 | tee downloads/logs/cookie-update.log
-          import os
-          import asyncio
+          import os, asyncio, time
           from playwright.async_api import async_playwright
-          import time
 
           async def main():
               async with async_playwright() as p:
@@ -37,11 +36,30 @@ jobs:
                       await page.goto('https://accounts.google.com/signin/v2/identifier?service=youtube&passive=true')
                       await page.fill('input[type="email"]', os.environ['EMAIL'])
                       await page.click('#identifierNext')
-                      await page.wait_for_selector('input[type="password"]', timeout=10000)
+
+                      # انتظار برای حالت‌های مختلف صفحه بعد از کلیک Next
+                      # برخی اوقات گوگل مستقیماً فیلد رمز را نشان نمی‌دهد
+                      try:
+                          # ابتدا منتظر فیلد رمز عبور معمولی
+                          await page.wait_for_selector('input[type="password"]', timeout=15000)
+                      except:
+                          # اگر ظاهر نشد، احتمالاً یک صفحه چالش یا تأیید هویت وجود دارد
+                          # سعی می‌کنیم ببینیم آیا صفحه خطایی دارد یا منتظر می‌مانیم
+                          print("Password field not found immediately, checking for verification page...")
+                          # اگر صفحه‌ای با عنوان "Verify it's you" یا "Too many attempts" دیدیم، خطا می‌دهیم
+                          if await page.locator('text=Verifikasi').count() > 0 or await page.locator('text=Too many').count() > 0:
+                              raise Exception("Google asks for verification / captcha. Cannot proceed automatically.")
+                          # در غیر این صورت کمی بیشتر منتظر می‌مانیم
+                          await page.wait_for_timeout(5000)
+                          # دوباره تلاش برای فیلد رمز
+                          await page.wait_for_selector('input[type="password"]', timeout=15000)
+
                       await page.fill('input[type="password"]', os.environ['PASSWORD'])
                       await page.click('#passwordNext')
+
+                      # حالا منتظر ماندن برای ورود کامل به یوتیوب
                       await page.wait_for_url('https://www.youtube.com/**', timeout=30000)
-                      
+
                       cookies = await page.context.cookies()
                       with open('cookies.txt', 'w') as f:
                           f.write("# Netscape HTTP Cookie File\n")
@@ -65,22 +83,26 @@ jobs:
           EOF
 
       - name: "Update YT_COOKIES secret"
-        if: success()
+        if: success() && hashFiles('cookies.txt') != ''
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          BASE64_CONTENT=$(base64 -w0 cookies.txt)
-          echo "$BASE64_CONTENT" | gh secret set YT_COOKIES --repo $GITHUB_REPOSITORY
-          echo "YT_COOKIES updated successfully."
-          rm -f cookies.txt
+          if [ -f cookies.txt ]; then
+            BASE64_CONTENT=$(base64 -w0 cookies.txt)
+            echo "$BASE64_CONTENT" | gh secret set YT_COOKIES --repo $GITHUB_REPOSITORY
+            echo "YT_COOKIES updated successfully."
+            rm -f cookies.txt
+          else
+            echo "Error: cookies.txt was not generated!"
+            exit 1
+          fi
 
       - name: "Push error log on failure"
         if: failure()
         run: |
           mkdir -p downloads/logs
-          # اگر فایل لاگ وجود نداشت، یک پیام پیش‌فرض بساز
           if [ ! -f downloads/logs/cookie-update.log ]; then
-            echo "No log file was generated." > downloads/logs/cookie-update.log
+            echo "No log generated." > downloads/logs/cookie-update.log
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
