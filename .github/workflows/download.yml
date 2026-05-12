@@ -70,6 +70,8 @@ on:
 jobs:
   download:
     runs-on: ubuntu-latest
+    outputs:
+      download_failed: ${{ steps.download_step.outputs.failed }}
     steps:
       - name: "Install dependencies"
         run: |
@@ -83,13 +85,11 @@ jobs:
         run: |
           mkdir -p downloads
           URL="${{ github.event.inputs.url }}"
-          # Try to get title; if fails, use "unknown-video" as folder name
           TITLE=$(yt-dlp --print title "$URL" 2>/dev/null || echo "unknown-video")
           SAFE_TITLE=$(echo "$TITLE" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
           FOLDER="downloads/${SAFE_TITLE}"
           mkdir -p "$FOLDER"
 
-          # Temporarily disable exit-on-error for yt-dlp
           set +o pipefail
           yt-dlp -F "$URL" 2>&1 | tee "$FOLDER/formats.txt"
           YT_EXIT=$?
@@ -101,6 +101,13 @@ jobs:
             echo "" >> "$FOLDER/formats.txt"
             echo "Use the IDs from the left column in 'format_code' for your next run." >> "$FOLDER/formats.txt"
           fi
+
+      - name: "Upload simulation output"
+        if: ${{ github.event.inputs.simulate == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: simulation-output
+          path: downloads/*
 
       # ---------------- ACTUAL DOWNLOAD MODE ----------------
       - name: "Build format string"
@@ -117,7 +124,6 @@ jobs:
             exit 0
           fi
 
-          # audio bitrate helper
           abr_filter() {
             local q="$1"
             if [ -z "$q" ] || [ "$q" = "best" ]; then
@@ -131,7 +137,6 @@ jobs:
           if [ "$TYPE" = "audio_only" ]; then
             F=$(abr_filter "$AQ")
           else
-            # video+audio
             if [ -z "$VQ" ] || [ "$VQ" = "best" ]; then
               VID="bestvideo"
             else
@@ -144,11 +149,11 @@ jobs:
           echo "format=${F}" >> $GITHUB_OUTPUT
 
       - name: "Download with yt-dlp"
+        id: download_step
         if: ${{ github.event.inputs.simulate == 'false' }}
         run: |
           mkdir -p downloads
 
-          # Build additional arguments for subtitles
           SUBS_ARGS=""
           if [ -n "${{ github.event.inputs.sub_lang }}" ]; then
             SUBS_ARGS="--write-subs --sub-lang ${{ github.event.inputs.sub_lang }}"
@@ -157,12 +162,13 @@ jobs:
             fi
           fi
 
-          # Thumbnail flag
           THUMB_FLAG=""
           if [ "${{ github.event.inputs.write_thumbnail }}" = "true" ]; then
             THUMB_FLAG="--write-thumbnail"
           fi
 
+          # Download with error capture
+          set +o pipefail
           yt-dlp \
             --format "${{ steps.fmt.outputs.format }}" \
             --output "downloads/%(title)s/${{ github.event.inputs.filename_template }}" \
@@ -172,10 +178,19 @@ jobs:
             --merge-output-format mkv \
             $SUBS_ARGS \
             $THUMB_FLAG \
-            "${{ github.event.inputs.url }}"
+            "${{ github.event.inputs.url }}" 2>&1 | tee downloads/yt-dlp.log
+          YT_EXIT=$?
+          set -o pipefail
+
+          if [ $YT_EXIT -ne 0 ]; then
+            echo "Download failed. Check yt-dlp.log for details." > downloads/download-failed.txt
+            echo "failed=true" >> $GITHUB_OUTPUT
+          else
+            echo "failed=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: "Split large files into zip parts"
-        if: ${{ github.event.inputs.simulate == 'false' }}
+        if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed != 'true' }}
         run: |
           MAXSIZE_MB=95
           MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
@@ -196,3 +211,9 @@ jobs:
         with:
           name: downloaded-media
           path: downloads/*
+
+      - name: "Fail workflow if download failed"
+        if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed == 'true' }}
+        run: |
+          echo "Download failed. Please check the artifact for error details."
+          exit 1
