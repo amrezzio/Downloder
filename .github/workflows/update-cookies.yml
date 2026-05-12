@@ -2,24 +2,28 @@ name: "Auto-Update YouTube Cookies"
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # هر 24 ساعت یکبار (می‌توانید تغییر دهید)
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
   update-secret:
     runs-on: ubuntu-latest
     steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+
       - name: "Setup Python and Playwright"
         run: |
           pip install playwright
           playwright install --with-deps chromium
 
       - name: "Generate fresh cookies.txt"
+        id: generate
         env:
           EMAIL: ${{ secrets.YT_DUMMY_EMAIL }}
           PASSWORD: ${{ secrets.YT_DUMMY_PASSWORD }}
         run: |
-          python << 'EOF'
+          python << 'EOF' 2>&1 | tee downloads/logs/cookie-update.log
           import os
           import asyncio
           from playwright.async_api import async_playwright
@@ -30,20 +34,14 @@ jobs:
                   browser = await p.chromium.launch(headless=True)
                   page = await browser.new_page()
                   try:
-                      # 1. Go to Google login
                       await page.goto('https://accounts.google.com/signin/v2/identifier?service=youtube&passive=true')
                       await page.fill('input[type="email"]', os.environ['EMAIL'])
                       await page.click('#identifierNext')
-
-                      # 2. Password
                       await page.wait_for_selector('input[type="password"]', timeout=10000)
                       await page.fill('input[type="password"]', os.environ['PASSWORD'])
                       await page.click('#passwordNext')
-
-                      # 3. Wait for YouTube homepage
                       await page.wait_for_url('https://www.youtube.com/**', timeout=30000)
-
-                      # 4. Extract cookies in Netscape format
+                      
                       cookies = await page.context.cookies()
                       with open('cookies.txt', 'w') as f:
                           f.write("# Netscape HTTP Cookie File\n")
@@ -56,7 +54,6 @@ jobs:
                               name = cookie.get('name', '')
                               value = cookie.get('value', '')
                               f.write(f"{domain}\t{flag}\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n")
-
                       print("Success: cookies.txt generated.")
                   except Exception as e:
                       print(f"Error: {e}")
@@ -68,13 +65,26 @@ jobs:
           EOF
 
       - name: "Update YT_COOKIES secret"
+        if: success()
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          # Encode to base64 without wrapping
           BASE64_CONTENT=$(base64 -w0 cookies.txt)
-          # Update the secret directly (nothing printed in logs)
           echo "$BASE64_CONTENT" | gh secret set YT_COOKIES --repo $GITHUB_REPOSITORY
           echo "YT_COOKIES updated successfully."
-          # Remove temporary file
           rm -f cookies.txt
+
+      - name: "Push error log on failure"
+        if: failure()
+        run: |
+          mkdir -p downloads/logs
+          # اگر فایل لاگ وجود نداشت، یک پیام پیش‌فرض بساز
+          if [ ! -f downloads/logs/cookie-update.log ]; then
+            echo "No log file was generated." > downloads/logs/cookie-update.log
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add downloads/logs/cookie-update.log
+          git diff --staged --quiet || git commit -m "Cookie update failed – see error log"
+          git pull --rebase origin ${{ github.ref }} || true
+          git push origin ${{ github.ref }}
