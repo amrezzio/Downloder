@@ -75,14 +75,24 @@ jobs:
     steps:
       - name: "Checkout repository"
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "Install dependencies"
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg zip
-          pip install -q yt-dlp
+          sudo apt-get install -y -qq ffmpeg zip unzip curl
+          pip install -q "yt-dlp[default]"
+
+          # Install Deno JS runtime (required by yt-dlp for YouTube extraction)
+          curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh
+          echo "/usr/local/bin" >> $GITHUB_PATH
+          deno --version
+
+      # Setup cookies if available
+      - name: "Setup cookies"
+        if: ${{ secrets.YT_COOKIES != '' }}
+        run: |
+          echo "${{ secrets.YT_COOKIES }}" | base64 -d > cookies.txt
+          echo "Cookies file created for YouTube authentication."
 
       # ---------------- SIMULATE MODE ----------------
       - name: "Simulate: List available formats"
@@ -90,13 +100,35 @@ jobs:
         run: |
           mkdir -p downloads
           URL="${{ github.event.inputs.url }}"
-          TITLE=$(yt-dlp --print title "$URL" 2>/dev/null || echo "unknown-video")
-          SAFE_TITLE=$(echo "$TITLE" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
+
+          # Extract video ID for folder naming if title fails
+          VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1)
+          if [ -z "$VIDEO_ID" ]; then
+            VIDEO_ID="unknown-video"
+          fi
+
+          # Build cookies argument
+          COOKIES_ARG=""
+          [ -f cookies.txt ] && COOKIES_ARG="--cookies cookies.txt"
+
+          # Try to get title safely
+          set +o pipefail
+          TITLE=$(yt-dlp --print title $COOKIES_ARG "$URL" 2>/dev/null || echo "")
+          YT_EXIT=$?
+          set -o pipefail
+
+          # Use video ID if title extraction failed
+          if [ -z "$TITLE" ] || [ $YT_EXIT -ne 0 ]; then
+            SAFE_TITLE="$VIDEO_ID"
+          else
+            SAFE_TITLE=$(echo "$TITLE" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
+          fi
+
           FOLDER="downloads/${SAFE_TITLE}"
           mkdir -p "$FOLDER"
 
           set +o pipefail
-          yt-dlp -F "$URL" 2>&1 | tee "$FOLDER/formats.txt"
+          yt-dlp -F $COOKIES_ARG "$URL" 2>&1 | tee "$FOLDER/formats.txt"
           YT_EXIT=$?
           set -o pipefail
 
@@ -160,6 +192,12 @@ jobs:
         run: |
           mkdir -p downloads
 
+          URL="${{ github.event.inputs.url }}"
+
+          # Build cookies argument
+          COOKIES_ARG=""
+          [ -f cookies.txt ] && COOKIES_ARG="--cookies cookies.txt"
+
           SUBS_ARGS=""
           if [ -n "${{ github.event.inputs.sub_lang }}" ]; then
             SUBS_ARGS="--write-subs --sub-lang ${{ github.event.inputs.sub_lang }}"
@@ -181,11 +219,18 @@ jobs:
             --geo-bypass \
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
             --merge-output-format mkv \
+            $COOKIES_ARG \
             $SUBS_ARGS \
             $THUMB_FLAG \
-            "${{ github.event.inputs.url }}" 2>&1 | tee downloads/yt-dlp.log
+            "$URL" 2>&1 | tee downloads/yt-dlp.log
           YT_EXIT=$?
           set -o pipefail
+
+          # Extract video ID for folder naming
+          VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1)
+          if [ -z "$VIDEO_ID" ]; then
+            VIDEO_ID="unknown-video"
+          fi
 
           if [ $YT_EXIT -ne 0 ]; then
             echo "Download failed. Check yt-dlp.log for details." > downloads/download-failed.txt
@@ -194,12 +239,15 @@ jobs:
             echo "failed=false" >> $GITHUB_OUTPUT
           fi
 
-          # Move log inside the video folder if it exists
+          # Move log into a dedicated folder
           VIDEO_FOLDER=$(find downloads -mindepth 1 -maxdepth 1 -type d | head -1)
-          if [ -n "$VIDEO_FOLDER" ]; then
-            mv -f downloads/yt-dlp.log "$VIDEO_FOLDER/" 2>/dev/null
-            [ -f downloads/download-failed.txt ] && mv downloads/download-failed.txt "$VIDEO_FOLDER/"
+          if [ -z "$VIDEO_FOLDER" ]; then
+            # No folder created by yt-dlp (e.g., title extraction failed), create one with video ID
+            VIDEO_FOLDER="downloads/${VIDEO_ID}"
+            mkdir -p "$VIDEO_FOLDER"
           fi
+          mv -f downloads/yt-dlp.log "$VIDEO_FOLDER/" 2>/dev/null
+          [ -f downloads/download-failed.txt ] && mv downloads/download-failed.txt "$VIDEO_FOLDER/"
 
       - name: "Compress large main file only"
         if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed != 'true' }}
@@ -210,7 +258,6 @@ jobs:
           VIDEO_FOLDER=$(find downloads -mindepth 1 -maxdepth 1 -type d | head -1)
           if [ -z "$VIDEO_FOLDER" ]; then exit 0; fi
 
-          # Find the main media file (largest file with common media extensions)
           MAIN_FILE=$(find "$VIDEO_FOLDER" -type f \( -iname "*.mkv" -o -iname "*.mp4" -o -iname "*.webm" -o -iname "*.m4a" -o -iname "*.opus" -o -iname "*.mp3" \) -print0 | xargs -0 ls -S | head -1)
           if [ -z "$MAIN_FILE" ]; then exit 0; fi
 
@@ -219,7 +266,7 @@ jobs:
             echo "Main file exceeds ${MAXSIZE_MB} MB, compressing..."
             BASENAME=$(basename "$MAIN_FILE")
             ZIPNAME="${BASENAME}.zip"
-            (cd "$VIDEO_FOLDER" && zip -r "$ZIPNAME" "$BASENAME" && rm "$BASENAME")
+            (cd "$VIDEO_FOLDER" && zip "$ZIPNAME" "$BASENAME" && rm "$BASENAME")
           fi
 
       - name: "Commit and push to repository"
