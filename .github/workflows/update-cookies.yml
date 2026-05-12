@@ -2,7 +2,7 @@ name: "Auto-Update YouTube Cookies"
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # هر 24 ساعت یکبار
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -37,27 +37,18 @@ jobs:
                       await page.fill('input[type="email"]', os.environ['EMAIL'])
                       await page.click('#identifierNext')
 
-                      # انتظار برای حالت‌های مختلف صفحه بعد از کلیک Next
-                      # برخی اوقات گوگل مستقیماً فیلد رمز را نشان نمی‌دهد
+                      # Wait for password field with fallback
                       try:
-                          # ابتدا منتظر فیلد رمز عبور معمولی
                           await page.wait_for_selector('input[type="password"]', timeout=15000)
                       except:
-                          # اگر ظاهر نشد، احتمالاً یک صفحه چالش یا تأیید هویت وجود دارد
-                          # سعی می‌کنیم ببینیم آیا صفحه خطایی دارد یا منتظر می‌مانیم
-                          print("Password field not found immediately, checking for verification page...")
-                          # اگر صفحه‌ای با عنوان "Verify it's you" یا "Too many attempts" دیدیم، خطا می‌دهیم
+                          # Possibly verification page
                           if await page.locator('text=Verifikasi').count() > 0 or await page.locator('text=Too many').count() > 0:
-                              raise Exception("Google asks for verification / captcha. Cannot proceed automatically.")
-                          # در غیر این صورت کمی بیشتر منتظر می‌مانیم
+                              raise Exception("Google asks for verification / captcha.")
                           await page.wait_for_timeout(5000)
-                          # دوباره تلاش برای فیلد رمز
                           await page.wait_for_selector('input[type="password"]', timeout=15000)
 
                       await page.fill('input[type="password"]', os.environ['PASSWORD'])
                       await page.click('#passwordNext')
-
-                      # حالا منتظر ماندن برای ورود کامل به یوتیوب
                       await page.wait_for_url('https://www.youtube.com/**', timeout=30000)
 
                       cookies = await page.context.cookies()
@@ -83,7 +74,7 @@ jobs:
           EOF
 
       - name: "Update YT_COOKIES secret"
-        if: success() && hashFiles('cookies.txt') != ''
+        if: success()
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
