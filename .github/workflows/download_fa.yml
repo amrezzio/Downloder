@@ -1,4 +1,4 @@
-name: "دانلودر پیشرفته yt-dlp"
+name: "‫دانلودر پیشرفته yt-dlp"
 
 on:
   workflow_dispatch:
