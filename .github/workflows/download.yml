@@ -81,18 +81,13 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg zip unzip curl
           pip install -q "yt-dlp[default]"
-
           # Install Deno JS runtime (required by yt-dlp for YouTube extraction)
           curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh
           echo "/usr/local/bin" >> $GITHUB_PATH
-          deno --version
 
-      # Setup cookies if available
       - name: "Setup cookies"
         if: ${{ secrets.YT_COOKIES != '' }}
-        run: |
-          echo "${{ secrets.YT_COOKIES }}" | base64 -d > cookies.txt
-          echo "Cookies file created for YouTube authentication."
+        run: echo "${{ secrets.YT_COOKIES }}" | base64 -d > cookies.txt
 
       # ---------------- SIMULATE MODE ----------------
       - name: "Simulate: List available formats"
@@ -100,46 +95,26 @@ jobs:
         run: |
           mkdir -p downloads
           URL="${{ github.event.inputs.url }}"
-
-          # Extract video ID for folder naming if title fails
-          VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1)
-          if [ -z "$VIDEO_ID" ]; then
-            VIDEO_ID="unknown-video"
-          fi
-
-          # Build cookies argument
+          VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1 || echo "unknown-video")
           COOKIES_ARG=""
           [ -f cookies.txt ] && COOKIES_ARG="--cookies cookies.txt"
 
-          # Try to get title safely
           set +o pipefail
           TITLE=$(yt-dlp --print title $COOKIES_ARG "$URL" 2>/dev/null || echo "")
-          YT_EXIT=$?
-          set -o pipefail
-
-          # Use video ID if title extraction failed
-          if [ -z "$TITLE" ] || [ $YT_EXIT -ne 0 ]; then
-            SAFE_TITLE="$VIDEO_ID"
-          else
-            SAFE_TITLE=$(echo "$TITLE" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
-          fi
-
+          SAFE_TITLE=$(echo "${TITLE:-$VIDEO_ID}" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
           FOLDER="downloads/${SAFE_TITLE}"
           mkdir -p "$FOLDER"
 
-          set +o pipefail
           yt-dlp -F $COOKIES_ARG "$URL" 2>&1 | tee "$FOLDER/formats.txt"
           YT_EXIT=$?
           set -o pipefail
 
           if [ $YT_EXIT -ne 0 ]; then
-            echo "ERROR: yt-dlp could not fetch format list. Possibly invalid URL or restricted content." | tee -a "$FOLDER/formats.txt"
+            echo "ERROR: yt-dlp could not fetch format list." | tee -a "$FOLDER/formats.txt"
           else
-            echo "" >> "$FOLDER/formats.txt"
             echo "Use the IDs from the left column in 'format_code' for your next run." >> "$FOLDER/formats.txt"
           fi
 
-          # Push simulation results to repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add downloads/
@@ -156,31 +131,15 @@ jobs:
           FMT_CODE="${{ github.event.inputs.format_code }}"
           VQ="${{ github.event.inputs.video_quality }}"
           AQ="${{ github.event.inputs.audio_quality }}"
-
-          if [ -n "$FMT_CODE" ]; then
-            echo "format=$FMT_CODE" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
+          if [ -n "$FMT_CODE" ]; then echo "format=$FMT_CODE" >> $GITHUB_OUTPUT; exit 0; fi
           abr_filter() {
             local q="$1"
-            if [ -z "$q" ] || [ "$q" = "best" ]; then
-              echo "bestaudio/best"
-            else
-              local num="${q%k}"
-              echo "bestaudio[abr<=${num}]/bestaudio/best"
-            fi
+            if [ -z "$q" ] || [ "$q" = "best" ]; then echo "bestaudio/best"
+            else echo "bestaudio[abr<=${q%k}]/bestaudio/best"; fi
           }
-
-          if [ "$TYPE" = "audio_only" ]; then
-            F=$(abr_filter "$AQ")
+          if [ "$TYPE" = "audio_only" ]; then F=$(abr_filter "$AQ")
           else
-            if [ -z "$VQ" ] || [ "$VQ" = "best" ]; then
-              VID="bestvideo"
-            else
-              height="${VQ%p}"
-              VID="bestvideo[height<=${height}]"
-            fi
+            if [ -z "$VQ" ] || [ "$VQ" = "best" ]; then VID="bestvideo"; else VID="bestvideo[height<=${VQ%p}]"; fi
             AUD=$(abr_filter "$AQ")
             F="${VID}+${AUD}/${VID}+bestaudio/bestvideo+bestaudio/best"
           fi
@@ -191,47 +150,31 @@ jobs:
         if: ${{ github.event.inputs.simulate == 'false' }}
         run: |
           mkdir -p downloads
-
           URL="${{ github.event.inputs.url }}"
-
-          # Build cookies argument
-          COOKIES_ARG=""
-          [ -f cookies.txt ] && COOKIES_ARG="--cookies cookies.txt"
+          COOKIES_ARG=""; [ -f cookies.txt ] && COOKIES_ARG="--cookies cookies.txt"
 
           SUBS_ARGS=""
           if [ -n "${{ github.event.inputs.sub_lang }}" ]; then
             SUBS_ARGS="--write-subs --sub-lang ${{ github.event.inputs.sub_lang }}"
-            if [ "${{ github.event.inputs.embed_subs }}" = "true" ]; then
-              SUBS_ARGS="$SUBS_ARGS --embed-subs"
-            fi
+            [ "${{ github.event.inputs.embed_subs }}" = "true" ] && SUBS_ARGS="$SUBS_ARGS --embed-subs"
           fi
 
-          THUMB_FLAG=""
-          if [ "${{ github.event.inputs.write_thumbnail }}" = "true" ]; then
-            THUMB_FLAG="--write-thumbnail"
-          fi
+          THUMB_FLAG="";
+          [ "${{ github.event.inputs.write_thumbnail }}" = "true" ] && THUMB_FLAG="--write-thumbnail"
 
           set +o pipefail
           yt-dlp \
             --format "${{ steps.fmt.outputs.format }}" \
             --output "downloads/%(title)s/${{ github.event.inputs.filename_template }}" \
-            --add-metadata \
-            --geo-bypass \
+            --add-metadata --geo-bypass \
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
             --merge-output-format mkv \
-            $COOKIES_ARG \
-            $SUBS_ARGS \
-            $THUMB_FLAG \
+            $COOKIES_ARG $SUBS_ARGS $THUMB_FLAG \
             "$URL" 2>&1 | tee downloads/yt-dlp.log
           YT_EXIT=$?
           set -o pipefail
 
-          # Extract video ID for folder naming
-          VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1)
-          if [ -z "$VIDEO_ID" ]; then
-            VIDEO_ID="unknown-video"
-          fi
-
+          VIDEO_ID=$(echo "$URL" | grep -oP '(?:v=|/)([a-zA-Z0-9_-]{11})' | head -1 || echo "unknown-video")
           if [ $YT_EXIT -ne 0 ]; then
             echo "Download failed. Check yt-dlp.log for details." > downloads/download-failed.txt
             echo "failed=true" >> $GITHUB_OUTPUT
@@ -239,37 +182,29 @@ jobs:
             echo "failed=false" >> $GITHUB_OUTPUT
           fi
 
-          # Move log into a dedicated folder
           VIDEO_FOLDER=$(find downloads -mindepth 1 -maxdepth 1 -type d | head -1)
           if [ -z "$VIDEO_FOLDER" ]; then
-            # No folder created by yt-dlp (e.g., title extraction failed), create one with video ID
             VIDEO_FOLDER="downloads/${VIDEO_ID}"
             mkdir -p "$VIDEO_FOLDER"
           fi
           mv -f downloads/yt-dlp.log "$VIDEO_FOLDER/" 2>/dev/null
           [ -f downloads/download-failed.txt ] && mv downloads/download-failed.txt "$VIDEO_FOLDER/"
 
-      - name: "Compress large main file only"
+      - name: "Compress large main file"
         if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed != 'true' }}
         run: |
-          MAXSIZE_MB=95
-          MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
-
+          MAXSIZE_MB=95; MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
           VIDEO_FOLDER=$(find downloads -mindepth 1 -maxdepth 1 -type d | head -1)
-          if [ -z "$VIDEO_FOLDER" ]; then exit 0; fi
-
+          [ -z "$VIDEO_FOLDER" ] && exit 0
           MAIN_FILE=$(find "$VIDEO_FOLDER" -type f \( -iname "*.mkv" -o -iname "*.mp4" -o -iname "*.webm" -o -iname "*.m4a" -o -iname "*.opus" -o -iname "*.mp3" \) -print0 | xargs -0 ls -S | head -1)
-          if [ -z "$MAIN_FILE" ]; then exit 0; fi
-
+          [ -z "$MAIN_FILE" ] && exit 0
           SIZE=$(stat -c%s "$MAIN_FILE")
           if [ "$SIZE" -gt "$MAXSIZE_BYTES" ]; then
-            echo "Main file exceeds ${MAXSIZE_MB} MB, compressing..."
-            BASENAME=$(basename "$MAIN_FILE")
-            ZIPNAME="${BASENAME}.zip"
+            BASENAME=$(basename "$MAIN_FILE"); ZIPNAME="${BASENAME}.zip"
             (cd "$VIDEO_FOLDER" && zip "$ZIPNAME" "$BASENAME" && rm "$BASENAME")
           fi
 
-      - name: "Commit and push to repository"
+      - name: "Commit and push"
         if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed != 'true' }}
         run: |
           git config user.name "github-actions[bot]"
@@ -279,7 +214,7 @@ jobs:
           git pull --rebase origin ${{ github.ref }} || true
           git push origin ${{ github.ref }}
 
-      - name: "Push failure logs if download failed"
+      - name: "Fail workflow if download failed"
         if: ${{ github.event.inputs.simulate == 'false' && steps.download_step.outputs.failed == 'true' }}
         run: |
           git config user.name "github-actions[bot]"
