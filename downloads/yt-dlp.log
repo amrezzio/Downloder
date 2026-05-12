@@ -1,0 +1,34 @@
+[youtube:tab] Extracting URL: https://www.youtube.com/playlist?list=OLAK5uy_lE3St2ajPifN7UJIiSfFeZ31m5YDl1OMw
+[youtube:tab] OLAK5uy_lE3St2ajPifN7UJIiSfFeZ31m5YDl1OMw: Downloading webpage
+[youtube:tab] Sleeping 10.0 seconds ...
+[youtube:tab] OLAK5uy_lE3St2ajPifN7UJIiSfFeZ31m5YDl1OMw: Redownloading playlist API JSON with unavailable videos
+[download] Downloading playlist: 86 EIGHTY-SIX original soundtrack
+[youtube:tab] Playlist 86 EIGHTY-SIX original soundtrack: Downloading 42 items of 42
+[download] Downloading item 1 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=ahDLQbhgW5Y
+[youtube] Sleeping 10.0 seconds ...
+[youtube] ahDLQbhgW5Y: Downloading webpage
+[youtube] Sleeping 10.0 seconds ...
+[youtube] ahDLQbhgW5Y: Downloading tv downgraded player API JSON
+[youtube] Sleeping 10.0 seconds ...
+[youtube] ahDLQbhgW5Y: Downloading player 8fb635c2-main
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 10.0 seconds ...
+[youtube] ahDLQbhgW5Y: Downloading m3u8 information
+[info] ahDLQbhgW5Y: Downloading 1 format(s): 140
+[download] Sleeping 115.19 seconds ...
+[download] Destination: downloads/THE ANSWER/THE ANSWER.m4a
+[download]   0.0% of    3.49MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.49MiB at    1.47MiB/s ETA 00:02  [download]   0.2% of    3.49MiB at    1.77MiB/s ETA 00:01[download]   0.4% of    3.49MiB at    1.87MiB/s ETA 00:01[download]   0.9% of    3.49MiB at    1.93MiB/s ETA 00:01[download]   1.8% of    3.49MiB at    1.97MiB/s ETA 00:01[download]   3.6% of    3.49MiB at    1.98MiB/s ETA 00:01[download]   7.1% of    3.49MiB at    1.88MiB/s ETA 00:01[download]  14.3% of    3.49MiB at    1.89MiB/s ETA 00:01[download]  28.6% of    3.49MiB at    1.93MiB/s ETA 00:01[download]  57.3% of    3.49MiB at    1.96MiB/s ETA 00:00[download] 100.0% of    3.49MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.49MiB in 00:00:01 at 1.90MiB/s   
+[FixupM4a] Correcting container of "downloads/THE ANSWER/THE ANSWER.m4a"
+[Metadata] Adding metadata to "downloads/THE ANSWER/THE ANSWER.m4a"
+[download] Downloading item 2 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=yq-Taa-wNzg
+[youtube] Sleeping 10.0 seconds ...
+[youtube] yq-Taa-wNzg: Downloading webpage
+[youtube] Sleeping 10.0 seconds ...
+[youtube] yq-Taa-wNzg: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 10.0 seconds ...
+[youtube] yq-Taa-wNzg: Downloading m3u8 information
+[info] yq-Taa-wNzg: Downloading 1 format(s): 140
+[download] Sleeping 83.76 seconds ...
