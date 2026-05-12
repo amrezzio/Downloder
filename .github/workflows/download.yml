@@ -63,10 +63,6 @@ jobs:
           sudo apt-get install -y -qq ffmpeg zip
           pip install -q yt-dlp
 
-      - name: "Prepare cookies (optional)"
-        if: ${{ secrets.YT_COOKIES != '' }}
-        run: echo "${{ secrets.YT_COOKIES }}" | base64 -d > cookies.txt
-
       - name: "Build format string"
         id: fmt
         run: |
@@ -109,30 +105,22 @@ jobs:
       - name: "Download with yt-dlp"
         run: |
           mkdir -p downloads
-          YT_ARGS=(
-            --format "${{ steps.fmt.outputs.format }}"
-            --output "downloads/%(title)s/${{ github.event.inputs.filename_template }}"
-            --add-metadata
-            --geo-bypass
-            --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-            --merge-output-format mkv
-          )
-          if [ -f cookies.txt ]; then
-            YT_ARGS+=(--cookies cookies.txt)
-          fi
-          if [ "${{ github.event.inputs.write_thumbnail }}" = "true" ]; then
-            YT_ARGS+=(--write-thumbnail)
-          fi
-          yt-dlp "${YT_ARGS[@]}" "${{ github.event.inputs.url }}"
+          yt-dlp \
+            --format "${{ steps.fmt.outputs.format }}" \
+            --output "downloads/%(title)s/${{ github.event.inputs.filename_template }}" \
+            --add-metadata \
+            --geo-bypass \
+            --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            --merge-output-format mkv \
+            ${{ github.event.inputs.write_thumbnail == 'true' && '--write-thumbnail' || '' }} \
+            "${{ github.event.inputs.url }}"
 
       - name: "Split large files into zip parts"
         run: |
-          MAXSIZE_MB=95   # threshold in MB
+          MAXSIZE_MB=95
           MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
 
-          # find the downloaded folder(s)
           while IFS= read -r -d '' dir; do
-            # total size of this folder (including thumbnail if present)
             SIZE=$(du -sb "$dir" | cut -f1)
             if [ "$SIZE" -gt "$MAXSIZE_BYTES" ]; then
               BASE=$(basename "$dir")
