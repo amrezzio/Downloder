@@ -1,14 +1,14 @@
-[youtube] Extracting URL: https://youtube.com/watch?v=MKJw-rweh2o
-[youtube] MKJw-rweh2o: Downloading webpage
-[youtube] MKJw-rweh2o: Downloading tv downgraded player API JSON
-[youtube] MKJw-rweh2o: Downloading player 8fb635c2-main
+[youtube] Extracting URL: https://youtube.com/watch?v=Sdy5fSHz6t4
+[youtube] Sdy5fSHz6t4: Downloading webpage
+[youtube] Sdy5fSHz6t4: Downloading tv downgraded player API JSON
+[youtube] Sdy5fSHz6t4: Downloading player 8fb635c2-main
 [youtube] [jsc:deno] Solving JS challenges using deno
-[youtube] MKJw-rweh2o: Downloading m3u8 information
-[info] MKJw-rweh2o: Downloading 1 format(s): 140
+[youtube] Sdy5fSHz6t4: Downloading m3u8 information
+[info] Sdy5fSHz6t4: Downloading 1 format(s): 140
 [info] There are no subtitles for the requested languages
 [info] Downloading video thumbnail 44 ...
-[info] Writing video thumbnail 44 to: downloads/3 min 29 sec/3 min 29 sec.webp
-[download] Destination: downloads/3 min 29 sec/3 min 29 sec.m4a
-[download]   0.0% of    3.26MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.26MiB at  Unknown B/s ETA Unknown[download]   0.2% of    3.26MiB at    5.88MiB/s ETA 00:00  [download]   0.4% of    3.26MiB at    9.84MiB/s ETA 00:00[download]   0.9% of    3.26MiB at   15.68MiB/s ETA 00:00[download]   1.9% of    3.26MiB at   15.71MiB/s ETA 00:00[download]   3.8% of    3.26MiB at   21.41MiB/s ETA 00:00[download]   7.6% of    3.26MiB at   24.51MiB/s ETA 00:00[download]  15.3% of    3.26MiB at   34.32MiB/s ETA 00:00[download]  30.7% of    3.26MiB at   44.57MiB/s ETA 00:00[download]  61.4% of    3.26MiB at   59.97MiB/s ETA 00:00[download] 100.0% of    3.26MiB at   41.33MiB/s ETA 00:00[download] 100% of    3.26MiB in 00:00:00 at 24.60MiB/s  
-[FixupM4a] Correcting container of "downloads/3 min 29 sec/3 min 29 sec.m4a"
-[Metadata] Adding metadata to "downloads/3 min 29 sec/3 min 29 sec.m4a"
+[info] Writing video thumbnail 44 to: downloads/kyoukaisen/kyoukaisen.webp
+[download] Destination: downloads/kyoukaisen/kyoukaisen.m4a
+[download]   0.0% of    4.54MiB at  171.83KiB/s ETA 00:27[download]   0.1% of    4.54MiB at  470.07KiB/s ETA 00:09[download]   0.2% of    4.54MiB at    1.00MiB/s ETA 00:04[download]   0.3% of    4.54MiB at    2.05MiB/s ETA 00:02[download]   0.7% of    4.54MiB at  442.77KiB/s ETA 00:10[download]   1.4% of    4.54MiB at  505.19KiB/s ETA 00:09[download]   2.7% of    4.54MiB at  683.58KiB/s ETA 00:06[download]   5.5% of    4.54MiB at  967.35KiB/s ETA 00:04[download]  11.0% of    4.54MiB at    1.42MiB/s ETA 00:02[download]  22.0% of    4.54MiB at    2.17MiB/s ETA 00:01[download]  44.1% of    4.54MiB at    3.46MiB/s ETA 00:00[download]  88.1% of    4.54MiB at    5.72MiB/s ETA 00:00[download] 100.0% of    4.54MiB at    6.31MiB/s ETA 00:00[download] 100% of    4.54MiB in 00:00:00 at 4.71MiB/s   
+[FixupM4a] Correcting container of "downloads/kyoukaisen/kyoukaisen.m4a"
+[Metadata] Adding metadata to "downloads/kyoukaisen/kyoukaisen.m4a"
