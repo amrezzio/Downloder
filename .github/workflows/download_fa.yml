@@ -1,0 +1,192 @@
+name: "دانلودر پیشرفته yt‑dlp"
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'لینک ویدیو / لیست پخش'
+        required: true
+      simulate:
+        description: 'فقط شبیه‌سازی (نمایش فرمت‌های موجود بدون دانلود)'
+        type: boolean
+        required: false
+        default: false
+      download_type:
+        description: 'نوع دانلود'
+        required: true
+        type: choice
+        default: 'video+audio'
+        options:
+          - 'audio_only'
+          - 'video+audio'
+      format_code:
+        description: 'کد فرمت سفارشی (در صورت وارد شدن، تنظیمات کیفیت نادیده گرفته می‌شود)'
+        required: false
+        default: ''
+      video_quality:
+        description: 'حداکثر رزولوشن ویدیو (خالی = بهترین)'
+        required: false
+        type: choice
+        default: ''
+        options:
+          - ''
+          - '2160p'
+          - '1440p'
+          - '1080p'
+          - '720p'
+          - '480p'
+          - '360p'
+      audio_quality:
+        description: 'حداکثر بیتریت صدا (خالی = بهترین)'
+        required: false
+        type: choice
+        default: ''
+        options:
+          - ''
+          - '320k'
+          - '256k'
+          - '192k'
+          - '128k'
+          - '96k'
+      sub_lang:
+        description: 'کد(های) زبان زیرنویس (مثال: fa, en,fa یا all). خالی بگذارید تا از زیرنویس صرف‌نظر شود'
+        required: false
+        default: ''
+      embed_subs:
+        description: 'زیرنویس در ویدیو جاسازی شود (فقط اگر زیرنویس دانلود شود)'
+        type: boolean
+        required: false
+        default: false
+      write_thumbnail:
+        description: 'کاور (عکس) جداگانه در کنار ویدیو ذخیره شود'
+        type: boolean
+        required: false
+        default: false
+      filename_template:
+        description: 'الگوی نام فایل (پیش‌فرض: %(title)s.%(ext)s)'
+        required: false
+        default: '%(title)s.%(ext)s'
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "نصب پیش‌نیازها"
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg zip
+          pip install -q yt-dlp
+
+      # ---------------- حالت شبیه‌سازی ----------------
+      - name: "شبیه‌سازی: نمایش فرمت‌های موجود"
+        if: ${{ github.event.inputs.simulate == 'true' }}
+        run: |
+          mkdir -p downloads
+          URL="${{ github.event.inputs.url }}"
+          TITLE=$(yt-dlp --print title "$URL" 2>/dev/null || echo "shabih-sazi")
+          SAFE_TITLE=$(echo "$TITLE" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
+          FOLDER="downloads/${SAFE_TITLE}"
+          mkdir -p "$FOLDER"
+          echo "فرمت‌های موجود برای: $URL" | tee "$FOLDER/formats.txt"
+          echo "======================================================" | tee -a "$FOLDER/formats.txt"
+          yt-dlp -F "$URL" 2>&1 | tee -a "$FOLDER/formats.txt"
+          echo "" | tee -a "$FOLDER/formats.txt"
+          echo "از شناسه‌های ستون چپ به‌عنوان کد فرمت در اجرای بعدی استفاده کنید." | tee -a "$FOLDER/formats.txt"
+
+      - name: "بارگذاری خروجی شبیه‌سازی"
+        if: ${{ github.event.inputs.simulate == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: simulation-output
+          path: downloads/*
+
+      # ---------------- حالت دانلود واقعی ----------------
+      - name: "ساخت رشته فرمت"
+        id: fmt
+        if: ${{ github.event.inputs.simulate == 'false' }}
+        run: |
+          TYPE="${{ github.event.inputs.download_type }}"
+          FMT_CODE="${{ github.event.inputs.format_code }}"
+          VQ="${{ github.event.inputs.video_quality }}"
+          AQ="${{ github.event.inputs.audio_quality }}"
+
+          if [ -n "$FMT_CODE" ]; then
+            echo "format=$FMT_CODE" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          abr_filter() {
+            local q="$1"
+            if [ -z "$q" ] || [ "$q" = "best" ]; then
+              echo "bestaudio/best"
+            else
+              local num="${q%k}"
+              echo "bestaudio[abr<=${num}]/bestaudio/best"
+            fi
+          }
+
+          if [ "$TYPE" = "audio_only" ]; then
+            F=$(abr_filter "$AQ")
+          else
+            if [ -z "$VQ" ] || [ "$VQ" = "best" ]; then
+              VID="bestvideo"
+            else
+              height="${VQ%p}"
+              VID="bestvideo[height<=${height}]"
+            fi
+            AUD=$(abr_filter "$AQ")
+            F="${VID}+${AUD}/${VID}+bestaudio/bestvideo+bestaudio/best"
+          fi
+          echo "format=${F}" >> $GITHUB_OUTPUT
+
+      - name: "دانلود با yt‑dlp"
+        if: ${{ github.event.inputs.simulate == 'false' }}
+        run: |
+          mkdir -p downloads
+
+          SUBS_ARGS=""
+          if [ -n "${{ github.event.inputs.sub_lang }}" ]; then
+            SUBS_ARGS="--write-subs --sub-lang ${{ github.event.inputs.sub_lang }}"
+            if [ "${{ github.event.inputs.embed_subs }}" = "true" ]; then
+              SUBS_ARGS="$SUBS_ARGS --embed-subs"
+            fi
+          fi
+
+          THUMB_FLAG=""
+          if [ "${{ github.event.inputs.write_thumbnail }}" = "true" ]; then
+            THUMB_FLAG="--write-thumbnail"
+          fi
+
+          yt-dlp \
+            --format "${{ steps.fmt.outputs.format }}" \
+            --output "downloads/%(title)s/${{ github.event.inputs.filename_template }}" \
+            --add-metadata \
+            --geo-bypass \
+            --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            --merge-output-format mkv \
+            $SUBS_ARGS \
+            $THUMB_FLAG \
+            "${{ github.event.inputs.url }}"
+
+      - name: "تقسیم فایل‌های حجیم به بخش‌های زیپ"
+        if: ${{ github.event.inputs.simulate == 'false' }}
+        run: |
+          MAXSIZE_MB=95
+          MAXSIZE_BYTES=$((MAXSIZE_MB * 1024 * 1024))
+
+          while IFS= read -r -d '' dir; do
+            SIZE=$(du -sb "$dir" | cut -f1)
+            if [ "$SIZE" -gt "$MAXSIZE_BYTES" ]; then
+              BASE=$(basename "$dir")
+              echo "پوشه $BASE بیشتر از ${MAXSIZE_MB} مگابایت است، تقسیم می‌شود..."
+              (cd downloads && zip -r -s ${MAXSIZE_MB}m "${BASE}.zip" "$BASE")
+              rm -rf "$dir"
+            fi
+          done < <(find downloads -mindepth 1 -maxdepth 1 -type d -print0)
+
+      - name: "بارگذاری خروجی دانلود"
+        if: ${{ github.event.inputs.simulate == 'false' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: downloaded-media
+          path: downloads/*
