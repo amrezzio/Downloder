@@ -81,19 +81,26 @@ jobs:
       - name: "Simulate: List available formats"
         if: ${{ github.event.inputs.simulate == 'true' }}
         run: |
-          mkdir -p simulation-output
-          echo "Listing formats for: ${{ github.event.inputs.url }}" > simulation-output/formats.txt
-          echo "======================================================" >> simulation-output/formats.txt
-          yt-dlp -F "${{ github.event.inputs.url }}" >> simulation-output/formats.txt 2>&1
-          echo "" >> simulation-output/formats.txt
-          echo "Use the IDs from the left column in 'format_code' for your next run." >> simulation-output/formats.txt
+          mkdir -p downloads
+          URL="${{ github.event.inputs.url }}"
+          # Extract video title (safe for folder name)
+          TITLE=$(yt-dlp --print title "$URL" 2>/dev/null || echo "simulation")
+          # Clean up title for folder (replace problematic chars)
+          SAFE_TITLE=$(echo "$TITLE" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
+          FOLDER="downloads/${SAFE_TITLE}"
+          mkdir -p "$FOLDER"
+          echo "Listing formats for: $URL" | tee "$FOLDER/formats.txt"
+          echo "======================================================" | tee -a "$FOLDER/formats.txt"
+          yt-dlp -F "$URL" 2>&1 | tee -a "$FOLDER/formats.txt"
+          echo "" | tee -a "$FOLDER/formats.txt"
+          echo "Use the IDs from the left column in 'format_code' for your next run." | tee -a "$FOLDER/formats.txt"
 
-      - name: "Upload simulation result"
+      - name: "Upload simulation output"
         if: ${{ github.event.inputs.simulate == 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          name: format-list
-          path: simulation-output/formats.txt
+          name: simulation-output
+          path: downloads/*
 
       # ---------------- ACTUAL DOWNLOAD MODE ----------------
       - name: "Build format string"
