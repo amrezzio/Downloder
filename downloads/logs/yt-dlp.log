@@ -1,0 +1,13 @@
+[youtube] Extracting URL: https://youtu.be/BDq6qMAaSEA?si=0V_eqYLKHXaILcYd
+[youtube] BDq6qMAaSEA: Downloading webpage
+[youtube] BDq6qMAaSEA: Downloading tv downgraded player API JSON
+[youtube] BDq6qMAaSEA: Downloading player 8fb635c2-main
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] BDq6qMAaSEA: Downloading m3u8 information
+[info] BDq6qMAaSEA: Downloading 1 format(s): 140
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: downloads/「Creditless」86 EIGHTY-SIX Season 2 OP ⧸ Opening「UHD 60FPS」/「Creditless」86 EIGHTY-SIX Season 2 OP ⧸ Opening「UHD 60FPS」.webp
+[download] Destination: downloads/「Creditless」86 EIGHTY-SIX Season 2 OP ⧸ Opening「UHD 60FPS」/「Creditless」86 EIGHTY-SIX Season 2 OP ⧸ Opening「UHD 60FPS」.m4a
+[download]   0.1% of    1.56MiB at  645.58KiB/s ETA 00:02[download]   0.2% of    1.56MiB at    1.41MiB/s ETA 00:01[download]   0.4% of    1.56MiB at    2.66MiB/s ETA 00:00[download]   0.9% of    1.56MiB at    4.89MiB/s ETA 00:00[download]   1.9% of    1.56MiB at    5.53MiB/s ETA 00:00[download]   3.9% of    1.56MiB at    4.47MiB/s ETA 00:00[download]   7.9% of    1.56MiB at    1.51MiB/s ETA 00:00[download]  15.9% of    1.56MiB at    1.59MiB/s ETA 00:00[download]  31.9% of    1.56MiB at    2.00MiB/s ETA 00:00[download]  63.9% of    1.56MiB at    2.66MiB/s ETA 00:00[download] 100.0% of    1.56MiB at    3.46MiB/s ETA 00:00[download] 100% of    1.56MiB in 00:00:00 at 1.57MiB/s   
+[FixupM4a] Correcting container of "downloads/「Creditless」86 EIGHTY-SIX Season 2 OP ⧸ Opening「UHD 60FPS」/「Creditless」86 EIGHTY-SIX Season 2 OP ⧸ Opening「UHD 60FPS」.m4a"
+[Metadata] Adding metadata to "downloads/「Creditless」86 EIGHTY-SIX Season 2 OP ⧸ Opening「UHD 60FPS」/「Creditless」86 EIGHTY-SIX Season 2 OP ⧸ Opening「UHD 60FPS」.m4a"
