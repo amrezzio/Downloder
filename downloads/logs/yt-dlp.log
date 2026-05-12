@@ -1,0 +1,303 @@
+[youtube:tab] Extracting URL: https://youtube.com/playlist?list=PLPTktAWF7heSGobVaRxSfTOz4K4kES6-w&si=TTVqAdf39dhI9Ucu
+[youtube:tab] PLPTktAWF7heSGobVaRxSfTOz4K4kES6-w: Downloading webpage
+WARNING: [youtube:tab] YouTube said: INFO - 3 unavailable videos are hidden
+[youtube:tab] Sleeping 2.0 seconds ...
+[youtube:tab] PLPTktAWF7heSGobVaRxSfTOz4K4kES6-w: Redownloading playlist API JSON with unavailable videos
+[download] Downloading playlist: 86 EIGHTY-SIX REARRANGE & OUTTRACKS
+[youtube:tab] Sleeping 2.0 seconds ...
+[youtube:tab] PLPTktAWF7heSGobVaRxSfTOz4K4kES6-w page 1: Downloading API JSON
+[youtube:tab] Playlist 86 EIGHTY-SIX REARRANGE & OUTTRACKS: Downloading 21 items of 21
+[download] Downloading item 1 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=qBwVwPvhVgU
+[youtube] Sleeping 2.0 seconds ...
+[youtube] qBwVwPvhVgU: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] qBwVwPvhVgU: Downloading tv downgraded player API JSON
+ERROR: [youtube] qBwVwPvhVgU: Video unavailable. This video contains content from SME, who has blocked it in your country on copyright grounds
+[download] Downloading item 2 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=ih4EiCFTk_o
+[youtube] Sleeping 2.0 seconds ...
+[youtube] ih4EiCFTk_o: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] ih4EiCFTk_o: Downloading tv downgraded player API JSON
+[youtube] Sleeping 2.0 seconds ...
+[youtube] ih4EiCFTk_o: Downloading player 74be5b62-main
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] ih4EiCFTk_o: Downloading m3u8 information
+[info] ih4EiCFTk_o: Downloading 1 format(s): 140
+[download] Sleeping 12.86 seconds ...
+[download] Destination: downloads/02.8SIX _vcpf-ver._/02.8SIX _vcpf-ver._.m4a
+[download]   0.0% of    2.63MiB at  Unknown B/s ETA Unknown[download]   0.1% of    2.63MiB at    1.49MiB/s ETA 00:01  [download]   0.3% of    2.63MiB at    1.78MiB/s ETA 00:01[download]   0.6% of    2.63MiB at    1.87MiB/s ETA 00:01[download]   1.2% of    2.63MiB at    1.93MiB/s ETA 00:01[download]   2.3% of    2.63MiB at    1.96MiB/s ETA 00:01[download]   4.7% of    2.63MiB at    1.97MiB/s ETA 00:01[download]   9.5% of    2.63MiB at    1.95MiB/s ETA 00:01[download]  19.0% of    2.63MiB at    1.98MiB/s ETA 00:01[download]  38.1% of    2.63MiB at    1.99MiB/s ETA 00:00[download]  76.1% of    2.63MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    2.63MiB at    2.00MiB/s ETA 00:00[download] 100% of    2.63MiB in 00:00:01 at 1.74MiB/s   
+[FixupM4a] Correcting container of "downloads/02.8SIX _vcpf-ver._/02.8SIX _vcpf-ver._.m4a"
+[Metadata] Adding metadata to "downloads/02.8SIX _vcpf-ver._/02.8SIX _vcpf-ver._.m4a"
+[download] Downloading item 3 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=m5CeTPmN2Go
+[youtube] Sleeping 2.0 seconds ...
+[youtube] m5CeTPmN2Go: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] m5CeTPmN2Go: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] m5CeTPmN2Go: Downloading m3u8 information
+[info] m5CeTPmN2Go: Downloading 1 format(s): 140
+[download] Sleeping 19.05 seconds ...
+[download] Destination: downloads/03.SLUMDOG PARADISE -RA-/03.SLUMDOG PARADISE -RA-.m4a
+[download]   0.0% of    4.08MiB at  Unknown B/s ETA Unknown[download]   0.1% of    4.08MiB at    1.50MiB/s ETA 00:02  [download]   0.2% of    4.08MiB at    1.79MiB/s ETA 00:02[download]   0.4% of    4.08MiB at    1.90MiB/s ETA 00:02[download]   0.7% of    4.08MiB at    1.93MiB/s ETA 00:02[download]   1.5% of    4.08MiB at    1.96MiB/s ETA 00:02[download]   3.0% of    4.08MiB at    1.97MiB/s ETA 00:02[download]   6.1% of    4.08MiB at    1.94MiB/s ETA 00:01[download]  12.2% of    4.08MiB at    1.97MiB/s ETA 00:01[download]  24.5% of    4.08MiB at    1.99MiB/s ETA 00:01[download]  49.0% of    4.08MiB at    1.99MiB/s ETA 00:01[download]  98.0% of    4.08MiB at    2.00MiB/s ETA 00:00[download] 100.0% of    4.08MiB at    2.00MiB/s ETA 00:00[download] 100% of    4.08MiB in 00:00:02 at 1.81MiB/s   
+[FixupM4a] Correcting container of "downloads/03.SLUMDOG PARADISE -RA-/03.SLUMDOG PARADISE -RA-.m4a"
+[Metadata] Adding metadata to "downloads/03.SLUMDOG PARADISE -RA-/03.SLUMDOG PARADISE -RA-.m4a"
+[download] Downloading item 4 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=9-jfjfqBEN8
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 9-jfjfqBEN8: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 9-jfjfqBEN8: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 9-jfjfqBEN8: Downloading m3u8 information
+[info] 9-jfjfqBEN8: Downloading 1 format(s): 140
+[download] Sleeping 14.79 seconds ...
+[download] Destination: downloads/04.Two Worlds Apart -RA-/04.Two Worlds Apart -RA-.m4a
+[download]   0.0% of    3.55MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.55MiB at    1.47MiB/s ETA 00:02  [download]   0.2% of    3.55MiB at    1.76MiB/s ETA 00:02[download]   0.4% of    3.55MiB at    1.89MiB/s ETA 00:01[download]   0.9% of    3.55MiB at    1.93MiB/s ETA 00:01[download]   1.7% of    3.55MiB at    1.96MiB/s ETA 00:01[download]   3.5% of    3.55MiB at    1.97MiB/s ETA 00:01[download]   7.0% of    3.55MiB at    1.95MiB/s ETA 00:01[download]  14.1% of    3.55MiB at    1.97MiB/s ETA 00:01[download]  28.2% of    3.55MiB at    1.98MiB/s ETA 00:01[download]  56.3% of    3.55MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    3.55MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.55MiB in 00:00:01 at 1.86MiB/s   
+[FixupM4a] Correcting container of "downloads/04.Two Worlds Apart -RA-/04.Two Worlds Apart -RA-.m4a"
+[Metadata] Adding metadata to "downloads/04.Two Worlds Apart -RA-/04.Two Worlds Apart -RA-.m4a"
+[download] Downloading item 5 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=JXbNzLT4-30
+[youtube] Sleeping 2.0 seconds ...
+[youtube] JXbNzLT4-30: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] JXbNzLT4-30: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] JXbNzLT4-30: Downloading m3u8 information
+[info] JXbNzLT4-30: Downloading 1 format(s): 140
+[download] Sleeping 16.10 seconds ...
+[download] Destination: downloads/05.8SIX _gt-ver._/05.8SIX _gt-ver._.m4a
+[download]   0.0% of    2.17MiB at  Unknown B/s ETA Unknown[download]   0.1% of    2.17MiB at    1.44MiB/s ETA 00:01  [download]   0.3% of    2.17MiB at    1.79MiB/s ETA 00:01[download]   0.7% of    2.17MiB at    1.89MiB/s ETA 00:01[download]   1.4% of    2.17MiB at    1.94MiB/s ETA 00:01[download]   2.8% of    2.17MiB at    1.96MiB/s ETA 00:01[download]   5.7% of    2.17MiB at    1.97MiB/s ETA 00:01[download]  11.5% of    2.17MiB at    1.95MiB/s ETA 00:00[download]  22.9% of    2.17MiB at    1.97MiB/s ETA 00:00[download]  45.9% of    2.17MiB at    1.98MiB/s ETA 00:00[download]  91.9% of    2.17MiB at    1.98MiB/s ETA 00:00[download] 100.0% of    2.17MiB at    2.00MiB/s ETA 00:00[download] 100% of    2.17MiB in 00:00:01 at 1.62MiB/s   
+[FixupM4a] Correcting container of "downloads/05.8SIX _gt-ver._/05.8SIX _gt-ver._.m4a"
+[Metadata] Adding metadata to "downloads/05.8SIX _gt-ver._/05.8SIX _gt-ver._.m4a"
+[download] Downloading item 6 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=lkFd3LR1JG8
+[youtube] Sleeping 2.0 seconds ...
+[youtube] lkFd3LR1JG8: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] lkFd3LR1JG8: Downloading tv downgraded player API JSON
+ERROR: [youtube] lkFd3LR1JG8: Video unavailable. This video contains content from SME, who has blocked it in your country on copyright grounds
+[download] Downloading item 7 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=jdg3YROlcgE
+[youtube] Sleeping 2.0 seconds ...
+[youtube] jdg3YROlcgE: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] jdg3YROlcgE: Downloading tv downgraded player API JSON
+ERROR: [youtube] jdg3YROlcgE: Video unavailable. This video contains content from SME, who has blocked it in your country on copyright grounds
+[download] Downloading item 8 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=Oxfme0oR8_k
+[youtube] Sleeping 2.0 seconds ...
+[youtube] Oxfme0oR8_k: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] Oxfme0oR8_k: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] Oxfme0oR8_k: Downloading m3u8 information
+[info] Oxfme0oR8_k: Downloading 1 format(s): 140
+[download] Sleeping 15.65 seconds ...
+[download] Destination: downloads/08.THE ANSWER _MODv_ (Instrumental)/08.THE ANSWER _MODv_ (Instrumental).m4a
+[download]   0.0% of    3.57MiB at  850.94KiB/s ETA 00:04[download]   0.1% of    3.57MiB at    1.49MiB/s ETA 00:02[download]   0.2% of    3.57MiB at    1.81MiB/s ETA 00:01[download]   0.4% of    3.57MiB at    1.90MiB/s ETA 00:01[download]   0.8% of    3.57MiB at    1.17MiB/s ETA 00:03[download]   1.7% of    3.57MiB at    1.54MiB/s ETA 00:02[download]   3.5% of    3.57MiB at    1.66MiB/s ETA 00:02[download]   7.0% of    3.57MiB at    1.74MiB/s ETA 00:01[download]  14.0% of    3.57MiB at    1.85MiB/s ETA 00:01[download]  28.0% of    3.57MiB at    1.88MiB/s ETA 00:01[download]  56.0% of    3.57MiB at    1.92MiB/s ETA 00:00[download] 100.0% of    3.57MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.57MiB in 00:00:01 at 1.88MiB/s   
+[FixupM4a] Correcting container of "downloads/08.THE ANSWER _MODv_ (Instrumental)/08.THE ANSWER _MODv_ (Instrumental).m4a"
+[Metadata] Adding metadata to "downloads/08.THE ANSWER _MODv_ (Instrumental)/08.THE ANSWER _MODv_ (Instrumental).m4a"
+[download] Downloading item 9 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=adYu33ntJM8
+[youtube] Sleeping 2.0 seconds ...
+[youtube] adYu33ntJM8: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] adYu33ntJM8: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] adYu33ntJM8: Downloading m3u8 information
+[info] adYu33ntJM8: Downloading 1 format(s): 140
+[download] Sleeping 19.54 seconds ...
+[download] Destination: downloads/09.諸行日常/09.諸行日常.m4a
+[download]   0.0% of    3.46MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.46MiB at    1.51MiB/s ETA 00:02  [download]   0.2% of    3.46MiB at    1.80MiB/s ETA 00:01[download]   0.4% of    3.46MiB at    1.90MiB/s ETA 00:01[download]   0.9% of    3.46MiB at    1.93MiB/s ETA 00:01[download]   1.8% of    3.46MiB at    1.96MiB/s ETA 00:01[download]   3.6% of    3.46MiB at    1.98MiB/s ETA 00:01[download]   7.2% of    3.46MiB at    1.96MiB/s ETA 00:01[download]  14.4% of    3.46MiB at    1.96MiB/s ETA 00:01[download]  28.9% of    3.46MiB at    1.98MiB/s ETA 00:01[download]  57.8% of    3.46MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    3.46MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.46MiB in 00:00:01 at 1.82MiB/s   
+[FixupM4a] Correcting container of "downloads/09.諸行日常/09.諸行日常.m4a"
+[Metadata] Adding metadata to "downloads/09.諸行日常/09.諸行日常.m4a"
+[download] Downloading item 10 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=3t1WmN4Sf-A
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 3t1WmN4Sf-A: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 3t1WmN4Sf-A: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 3t1WmN4Sf-A: Downloading m3u8 information
+[info] 3t1WmN4Sf-A: Downloading 1 format(s): 140
+[download] Sleeping 12.62 seconds ...
+[download] Destination: downloads/10.ギアーデ連邦/10.ギアーデ連邦.m4a
+[download]   0.0% of    2.98MiB at  Unknown B/s ETA Unknown[download]   0.1% of    2.98MiB at    1.50MiB/s ETA 00:01  [download]   0.2% of    2.98MiB at    1.78MiB/s ETA 00:01[download]   0.5% of    2.98MiB at    1.90MiB/s ETA 00:01[download]   1.0% of    2.98MiB at    1.93MiB/s ETA 00:01[download]   2.1% of    2.98MiB at    1.96MiB/s ETA 00:01[download]   4.2% of    2.98MiB at    1.97MiB/s ETA 00:01[download]   8.4% of    2.98MiB at    1.94MiB/s ETA 00:01[download]  16.8% of    2.98MiB at    1.96MiB/s ETA 00:01[download]  33.5% of    2.98MiB at    1.99MiB/s ETA 00:00[download]  67.1% of    2.98MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    2.98MiB at    2.00MiB/s ETA 00:00[download] 100% of    2.98MiB in 00:00:01 at 1.81MiB/s   
+[FixupM4a] Correcting container of "downloads/10.ギアーデ連邦/10.ギアーデ連邦.m4a"
+[Metadata] Adding metadata to "downloads/10.ギアーデ連邦/10.ギアーデ連邦.m4a"
+[download] Downloading item 11 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=DQZpKNP0IZ8
+[youtube] Sleeping 2.0 seconds ...
+[youtube] DQZpKNP0IZ8: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] DQZpKNP0IZ8: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] DQZpKNP0IZ8: Downloading m3u8 information
+[info] DQZpKNP0IZ8: Downloading 1 format(s): 140
+[download] Sleeping 18.99 seconds ...
+[download] Destination: downloads/11.サンマグノリア共和国国軍本部/11.サンマグノリア共和国国軍本部.m4a
+[download]   0.0% of    3.61MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.61MiB at    1.51MiB/s ETA 00:02  [download]   0.2% of    3.61MiB at    1.77MiB/s ETA 00:02[download]   0.4% of    3.61MiB at    1.85MiB/s ETA 00:01[download]   0.8% of    3.61MiB at    1.93MiB/s ETA 00:01[download]   1.7% of    3.61MiB at    1.96MiB/s ETA 00:01[download]   3.4% of    3.61MiB at    1.98MiB/s ETA 00:01[download]   6.9% of    3.61MiB at    1.94MiB/s ETA 00:01[download]  13.8% of    3.61MiB at    1.97MiB/s ETA 00:01[download]  27.7% of    3.61MiB at    1.98MiB/s ETA 00:01[download]  55.4% of    3.61MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    3.61MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.61MiB in 00:00:02 at 1.68MiB/s   
+[FixupM4a] Correcting container of "downloads/11.サンマグノリア共和国国軍本部/11.サンマグノリア共和国国軍本部.m4a"
+[Metadata] Adding metadata to "downloads/11.サンマグノリア共和国国軍本部/11.サンマグノリア共和国国軍本部.m4a"
+[download] Downloading item 12 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=nZmfXFffzPA
+[youtube] Sleeping 2.0 seconds ...
+[youtube] nZmfXFffzPA: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] nZmfXFffzPA: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] nZmfXFffzPA: Downloading m3u8 information
+[info] nZmfXFffzPA: Downloading 1 format(s): 140
+[download] Sleeping 10.71 seconds ...
+[download] Destination: downloads/12.幼き日の記憶/12.幼き日の記憶.m4a
+[download]   0.0% of    2.87MiB at  901.61KiB/s ETA 00:03[download]   0.1% of    2.87MiB at    1.47MiB/s ETA 00:01[download]   0.2% of    2.87MiB at    1.80MiB/s ETA 00:01[download]   0.5% of    2.87MiB at    1.88MiB/s ETA 00:01[download]   1.1% of    2.87MiB at    1.21MiB/s ETA 00:02[download]   2.1% of    2.87MiB at    1.61MiB/s ETA 00:01[download]   4.3% of    2.87MiB at    1.71MiB/s ETA 00:01[download]   8.7% of    2.87MiB at    1.77MiB/s ETA 00:01[download]  17.4% of    2.87MiB at    1.94MiB/s ETA 00:01[download]  34.8% of    2.87MiB at    1.77MiB/s ETA 00:01[download]  69.6% of    2.87MiB at    1.82MiB/s ETA 00:00[download] 100.0% of    2.87MiB at    2.00MiB/s ETA 00:00[download] 100% of    2.87MiB in 00:00:01 at 1.67MiB/s   
+[FixupM4a] Correcting container of "downloads/12.幼き日の記憶/12.幼き日の記憶.m4a"
+[Metadata] Adding metadata to "downloads/12.幼き日の記憶/12.幼き日の記憶.m4a"
+[download] Downloading item 13 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=CieYl1BmqMo
+[youtube] Sleeping 2.0 seconds ...
+[youtube] CieYl1BmqMo: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] CieYl1BmqMo: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] CieYl1BmqMo: Downloading m3u8 information
+[info] CieYl1BmqMo: Downloading 1 format(s): 140
+[download] Sleeping 17.63 seconds ...
+[download] Destination: downloads/13.完全自律無人戦闘機械/13.完全自律無人戦闘機械.m4a
+[download]   0.0% of    2.87MiB at  779.76KiB/s ETA 00:03[download]   0.1% of    2.87MiB at    1.46MiB/s ETA 00:01[download]   0.2% of    2.87MiB at    1.80MiB/s ETA 00:01[download]   0.5% of    2.87MiB at    1.89MiB/s ETA 00:01[download]   1.1% of    2.87MiB at    1.17MiB/s ETA 00:02[download]   2.1% of    2.87MiB at    1.55MiB/s ETA 00:01[download]   4.3% of    2.87MiB at    1.67MiB/s ETA 00:01[download]   8.7% of    2.87MiB at    1.74MiB/s ETA 00:01[download]  17.4% of    2.87MiB at    1.87MiB/s ETA 00:01[download]  34.8% of    2.87MiB at    1.97MiB/s ETA 00:00[download]  69.6% of    2.87MiB at    1.78MiB/s ETA 00:00[download] 100.0% of    2.87MiB at    2.00MiB/s ETA 00:00[download] 100% of    2.87MiB in 00:00:01 at 1.65MiB/s   
+[FixupM4a] Correcting container of "downloads/13.完全自律無人戦闘機械/13.完全自律無人戦闘機械.m4a"
+[Metadata] Adding metadata to "downloads/13.完全自律無人戦闘機械/13.完全自律無人戦闘機械.m4a"
+[download] Downloading item 14 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=CSy-87ks5rk
+[youtube] Sleeping 2.0 seconds ...
+[youtube] CSy-87ks5rk: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] CSy-87ks5rk: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] CSy-87ks5rk: Downloading m3u8 information
+[info] CSy-87ks5rk: Downloading 1 format(s): 140
+[download] Sleeping 14.70 seconds ...
+[download] Destination: downloads/14.シン象世界/14.シン象世界.m4a
+[download]   0.0% of    4.66MiB at  Unknown B/s ETA Unknown[download]   0.1% of    4.66MiB at    1.53MiB/s ETA 00:03  [download]   0.1% of    4.66MiB at    1.77MiB/s ETA 00:02[download]   0.3% of    4.66MiB at    1.88MiB/s ETA 00:02[download]   0.6% of    4.66MiB at    1.93MiB/s ETA 00:02[download]   1.3% of    4.66MiB at    1.96MiB/s ETA 00:02[download]   2.7% of    4.66MiB at    1.97MiB/s ETA 00:02[download]   5.3% of    4.66MiB at    1.95MiB/s ETA 00:02[download]  10.7% of    4.66MiB at    1.96MiB/s ETA 00:02[download]  21.4% of    4.66MiB at    1.98MiB/s ETA 00:01[download]  42.9% of    4.66MiB at    1.99MiB/s ETA 00:01[download]  85.6% of    4.66MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    4.66MiB at    2.00MiB/s ETA 00:00[download] 100% of    4.66MiB in 00:00:02 at 1.84MiB/s   
+[FixupM4a] Correcting container of "downloads/14.シン象世界/14.シン象世界.m4a"
+[Metadata] Adding metadata to "downloads/14.シン象世界/14.シン象世界.m4a"
+[download] Downloading item 15 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=kmMjQsohlxs
+[youtube] Sleeping 2.0 seconds ...
+[youtube] kmMjQsohlxs: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] kmMjQsohlxs: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] kmMjQsohlxs: Downloading m3u8 information
+[info] kmMjQsohlxs: Downloading 1 format(s): 140
+[download] Sleeping 17.49 seconds ...
+[download] Destination: downloads/15.old shell/15.old shell.m4a
+[download]   0.0% of    3.16MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.16MiB at    1.49MiB/s ETA 00:02  [download]   0.2% of    3.16MiB at    1.77MiB/s ETA 00:01[download]   0.5% of    3.16MiB at    1.87MiB/s ETA 00:01[download]   1.0% of    3.16MiB at    1.92MiB/s ETA 00:01[download]   1.9% of    3.16MiB at    1.96MiB/s ETA 00:01[download]   3.9% of    3.16MiB at    1.98MiB/s ETA 00:01[download]   7.9% of    3.16MiB at    1.96MiB/s ETA 00:01[download]  15.8% of    3.16MiB at    1.98MiB/s ETA 00:01[download]  31.6% of    3.16MiB at    1.99MiB/s ETA 00:01[download]  63.3% of    3.16MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    3.16MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.16MiB in 00:00:01 at 1.65MiB/s   
+[FixupM4a] Correcting container of "downloads/15.old shell/15.old shell.m4a"
+[Metadata] Adding metadata to "downloads/15.old shell/15.old shell.m4a"
+[download] Downloading item 16 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=eIEq7sZdDx8
+[youtube] Sleeping 2.0 seconds ...
+[youtube] eIEq7sZdDx8: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] eIEq7sZdDx8: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] eIEq7sZdDx8: Downloading m3u8 information
+[info] eIEq7sZdDx8: Downloading 1 format(s): 140
+[download] Sleeping 19.76 seconds ...
+[download] Destination: downloads/16.作戦懐疑/16.作戦懐疑.m4a
+[download]   0.0% of    3.30MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.30MiB at    1.51MiB/s ETA 00:02  [download]   0.2% of    3.30MiB at    1.77MiB/s ETA 00:01[download]   0.4% of    3.30MiB at    1.87MiB/s ETA 00:01[download]   0.9% of    3.30MiB at    1.93MiB/s ETA 00:01[download]   1.9% of    3.30MiB at    1.96MiB/s ETA 00:01[download]   3.8% of    3.30MiB at    1.98MiB/s ETA 00:01[download]   7.5% of    3.30MiB at    1.96MiB/s ETA 00:01[download]  15.1% of    3.30MiB at    1.98MiB/s ETA 00:01[download]  30.3% of    3.30MiB at    1.99MiB/s ETA 00:01[download]  60.6% of    3.30MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    3.30MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.30MiB in 00:00:01 at 1.68MiB/s   
+[FixupM4a] Correcting container of "downloads/16.作戦懐疑/16.作戦懐疑.m4a"
+[Metadata] Adding metadata to "downloads/16.作戦懐疑/16.作戦懐疑.m4a"
+[download] Downloading item 17 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=-j_Rx83EgOw
+[youtube] Sleeping 2.0 seconds ...
+[youtube] -j_Rx83EgOw: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] -j_Rx83EgOw: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] -j_Rx83EgOw: Downloading m3u8 information
+[info] -j_Rx83EgOw: Downloading 1 format(s): 140
+[download] Sleeping 16.32 seconds ...
+[download] Destination: downloads/17.素行無情/17.素行無情.m4a
+[download]   0.0% of    3.41MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.41MiB at    1.49MiB/s ETA 00:02  [download]   0.2% of    3.41MiB at    1.78MiB/s ETA 00:01[download]   0.4% of    3.41MiB at    1.87MiB/s ETA 00:01[download]   0.9% of    3.41MiB at    1.93MiB/s ETA 00:01[download]   1.8% of    3.41MiB at    1.95MiB/s ETA 00:01[download]   3.6% of    3.41MiB at    1.98MiB/s ETA 00:01[download]   7.3% of    3.41MiB at    1.94MiB/s ETA 00:01[download]  14.6% of    3.41MiB at    1.97MiB/s ETA 00:01[download]  29.3% of    3.41MiB at    1.98MiB/s ETA 00:01[download]  58.6% of    3.41MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    3.41MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.41MiB in 00:00:02 at 1.63MiB/s   
+[FixupM4a] Correcting container of "downloads/17.素行無情/17.素行無情.m4a"
+[Metadata] Adding metadata to "downloads/17.素行無情/17.素行無情.m4a"
+[download] Downloading item 18 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=Jgh5nVDTnw0
+[youtube] Sleeping 2.0 seconds ...
+[youtube] Jgh5nVDTnw0: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] Jgh5nVDTnw0: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] Jgh5nVDTnw0: Downloading m3u8 information
+[info] Jgh5nVDTnw0: Downloading 1 format(s): 140
+[download] Sleeping 13.46 seconds ...
+[download] Destination: downloads/18.Eighty-Fred/18.Eighty-Fred.m4a
+[download]   0.0% of    3.45MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.45MiB at    1.50MiB/s ETA 00:02  [download]   0.2% of    3.45MiB at    1.78MiB/s ETA 00:01[download]   0.4% of    3.45MiB at    1.87MiB/s ETA 00:01[download]   0.9% of    3.45MiB at    1.93MiB/s ETA 00:01[download]   1.8% of    3.45MiB at    1.96MiB/s ETA 00:01[download]   3.6% of    3.45MiB at    1.98MiB/s ETA 00:01[download]   7.2% of    3.45MiB at    1.94MiB/s ETA 00:01[download]  14.5% of    3.45MiB at    1.98MiB/s ETA 00:01[download]  29.0% of    3.45MiB at    1.99MiB/s ETA 00:01[download]  57.9% of    3.45MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    3.45MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.45MiB in 00:00:02 at 1.69MiB/s   
+[FixupM4a] Correcting container of "downloads/18.Eighty-Fred/18.Eighty-Fred.m4a"
+[Metadata] Adding metadata to "downloads/18.Eighty-Fred/18.Eighty-Fred.m4a"
+[download] Downloading item 19 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=H9PJndUX5ZA
+[youtube] Sleeping 2.0 seconds ...
+[youtube] H9PJndUX5ZA: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] H9PJndUX5ZA: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] H9PJndUX5ZA: Downloading m3u8 information
+[info] H9PJndUX5ZA: Downloading 1 format(s): 140
+[download] Sleeping 18.34 seconds ...
+[download] Destination: downloads/19.Erica-Six/19.Erica-Six.m4a
+[download]   0.0% of    2.78MiB at  Unknown B/s ETA Unknown[download]   0.1% of    2.78MiB at    1.52MiB/s ETA 00:01  [download]   0.2% of    2.78MiB at    1.77MiB/s ETA 00:01[download]   0.5% of    2.78MiB at    1.88MiB/s ETA 00:01[download]   1.1% of    2.78MiB at    1.93MiB/s ETA 00:01[download]   2.2% of    2.78MiB at    1.96MiB/s ETA 00:01[download]   4.5% of    2.78MiB at    1.97MiB/s ETA 00:01[download]   9.0% of    2.78MiB at    1.95MiB/s ETA 00:01[download]  17.9% of    2.78MiB at    1.96MiB/s ETA 00:01[download]  35.9% of    2.78MiB at    1.98MiB/s ETA 00:00[download]  71.9% of    2.78MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    2.78MiB at    2.00MiB/s ETA 00:00[download] 100% of    2.78MiB in 00:00:01 at 1.47MiB/s   
+[FixupM4a] Correcting container of "downloads/19.Erica-Six/19.Erica-Six.m4a"
+[Metadata] Adding metadata to "downloads/19.Erica-Six/19.Erica-Six.m4a"
+[download] Downloading item 20 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=8eP1YKggboY
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 8eP1YKggboY: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 8eP1YKggboY: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 8eP1YKggboY: Downloading m3u8 information
+[info] 8eP1YKggboY: Downloading 1 format(s): 140
+[download] Sleeping 19.78 seconds ...
+[download] Destination: downloads/20.SLUMDOG PARADISE -RA- (Instrumental)/20.SLUMDOG PARADISE -RA- (Instrumental).m4a
+[download]   0.0% of    4.08MiB at  Unknown B/s ETA Unknown[download]   0.1% of    4.08MiB at    1.50MiB/s ETA 00:02  [download]   0.2% of    4.08MiB at    1.78MiB/s ETA 00:02[download]   0.4% of    4.08MiB at    1.90MiB/s ETA 00:02[download]   0.7% of    4.08MiB at    1.93MiB/s ETA 00:02[download]   1.5% of    4.08MiB at    1.96MiB/s ETA 00:02[download]   3.0% of    4.08MiB at    1.98MiB/s ETA 00:02[download]   6.1% of    4.08MiB at    1.85MiB/s ETA 00:02[download]  12.2% of    4.08MiB at    1.88MiB/s ETA 00:01[download]  24.5% of    4.08MiB at    1.91MiB/s ETA 00:01[download]  49.0% of    4.08MiB at    1.94MiB/s ETA 00:01[download]  97.3% of    4.08MiB at    1.96MiB/s ETA 00:00[download] 100.0% of    4.08MiB at    2.00MiB/s ETA 00:00[download] 100% of    4.08MiB in 00:00:02 at 1.74MiB/s   
+[FixupM4a] Correcting container of "downloads/20.SLUMDOG PARADISE -RA- (Instrumental)/20.SLUMDOG PARADISE -RA- (Instrumental).m4a"
+[Metadata] Adding metadata to "downloads/20.SLUMDOG PARADISE -RA- (Instrumental)/20.SLUMDOG PARADISE -RA- (Instrumental).m4a"
+[download] Downloading item 21 of 21
+[youtube] Extracting URL: https://www.youtube.com/watch?v=hD0QGABLEmI
+[youtube] Sleeping 2.0 seconds ...
+[youtube] hD0QGABLEmI: Downloading webpage
+[youtube] Sleeping 2.0 seconds ...
+[youtube] hD0QGABLEmI: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] hD0QGABLEmI: Downloading m3u8 information
+[info] hD0QGABLEmI: Downloading 1 format(s): 140
+[download] Sleeping 14.76 seconds ...
+[download] Destination: downloads/21.Two Worlds Apart -RA- (Instrumental)/21.Two Worlds Apart -RA- (Instrumental).m4a
+[download]   0.0% of    3.50MiB at  Unknown B/s ETA Unknown[download]   0.1% of    3.50MiB at    1.50MiB/s ETA 00:02  [download]   0.2% of    3.50MiB at    1.79MiB/s ETA 00:01[download]   0.4% of    3.50MiB at    1.89MiB/s ETA 00:01[download]   0.9% of    3.50MiB at    1.93MiB/s ETA 00:01[download]   1.8% of    3.50MiB at    1.96MiB/s ETA 00:01[download]   3.5% of    3.50MiB at    1.98MiB/s ETA 00:01[download]   7.1% of    3.50MiB at    1.96MiB/s ETA 00:01[download]  14.3% of    3.50MiB at    1.97MiB/s ETA 00:01[download]  28.6% of    3.50MiB at    1.98MiB/s ETA 00:01[download]  57.2% of    3.50MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    3.50MiB at    2.00MiB/s ETA 00:00[download] 100% of    3.50MiB in 00:00:02 at 1.69MiB/s   
+[FixupM4a] Correcting container of "downloads/21.Two Worlds Apart -RA- (Instrumental)/21.Two Worlds Apart -RA- (Instrumental).m4a"
+[Metadata] Adding metadata to "downloads/21.Two Worlds Apart -RA- (Instrumental)/21.Two Worlds Apart -RA- (Instrumental).m4a"
+[download] Finished downloading playlist: 86 EIGHTY-SIX REARRANGE & OUTTRACKS
