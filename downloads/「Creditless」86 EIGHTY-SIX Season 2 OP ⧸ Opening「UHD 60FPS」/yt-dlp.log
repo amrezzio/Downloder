@@ -1,13 +1,7 @@
-[youtube] Extracting URL: https://youtu.be/0U6JUTWas8c?si=U8WHXRnEgou6ePRU
-[youtube] 0U6JUTWas8c: Downloading webpage
-[youtube] 0U6JUTWas8c: Downloading tv downgraded player API JSON
-[youtube] 0U6JUTWas8c: Downloading player 8fb635c2-main
-[youtube] [jsc:deno] Solving JS challenges using deno
-[youtube] 0U6JUTWas8c: Downloading m3u8 information
-[info] 0U6JUTWas8c: Downloading 1 format(s): 140
-[info] Downloading video thumbnail 41 ...
-[info] Writing video thumbnail 41 to: downloads/86 EIGHTY-SIX - Opening 2 ｜ Kyoukaisen/86 EIGHTY-SIX - Opening 2 ｜ Kyoukaisen.webp
-[download] Destination: downloads/86 EIGHTY-SIX - Opening 2 ｜ Kyoukaisen/86 EIGHTY-SIX - Opening 2 ｜ Kyoukaisen.m4a
-[download]   0.1% of    1.39MiB at  Unknown B/s ETA 00:01[download]   0.2% of    1.39MiB at    2.01MiB/s ETA 00:00[download]   0.5% of    1.39MiB at    3.74MiB/s ETA 00:00[download]   1.1% of    1.39MiB at    6.74MiB/s ETA 00:00[download]   2.2% of    1.39MiB at    1.73MiB/s ETA 00:00[download]   4.4% of    1.39MiB at    1.94MiB/s ETA 00:00[download]   8.9% of    1.39MiB at    2.62MiB/s ETA 00:00[download]  17.9% of    1.39MiB at    3.74MiB/s ETA 00:00[download]  35.8% of    1.39MiB at    5.29MiB/s ETA 00:00[download]  71.8% of    1.39MiB at    8.32MiB/s ETA 00:00[download] 100.0% of    1.39MiB at   10.38MiB/s ETA 00:00[download] 100% of    1.39MiB in 00:00:00 at 5.21MiB/s   
-[FixupM4a] Correcting container of "downloads/86 EIGHTY-SIX - Opening 2 ｜ Kyoukaisen/86 EIGHTY-SIX - Opening 2 ｜ Kyoukaisen.m4a"
-[Metadata] Adding metadata to "downloads/86 EIGHTY-SIX - Opening 2 ｜ Kyoukaisen/86 EIGHTY-SIX - Opening 2 ｜ Kyoukaisen.m4a"
+[youtube] Extracting URL: https://youtube.com/watch?v=MKJw-rweh2o
+[youtube] MKJw-rweh2o: Downloading webpage
+WARNING: [youtube] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
+[youtube] MKJw-rweh2o: Downloading android vr player API JSON
+WARNING: [youtube] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] MKJw-rweh2o: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
