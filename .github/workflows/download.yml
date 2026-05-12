@@ -66,6 +66,22 @@ on:
         description: 'Filename template (e.g. %(title)s.%(ext)s)'
         required: false
         default: '%(title)s.%(ext)s'
+      sleep_requests:
+        description: 'Sleep between HTTP requests (seconds)'
+        required: false
+        default: '10'
+      sleep_interval:
+        description: 'Sleep interval before each download (seconds)'
+        required: false
+        default: ''
+      max_sleep_interval:
+        description: 'Max random sleep before each download (seconds)'
+        required: false
+        default: ''
+      limit_rate:
+        description: 'Maximum download rate (e.g. 2M, 500K)'
+        required: false
+        default: '2M'
 
 jobs:
   download:
@@ -196,6 +212,21 @@ jobs:
           THUMB_FLAG="";
           [ "${{ github.event.inputs.write_thumbnail }}" = "true" ] && THUMB_FLAG="--write-thumbnail"
 
+          # New: Sleep and rate limit arguments
+          SLEEP_ARGS=""
+          if [ -n "${{ github.event.inputs.sleep_requests }}" ]; then
+            SLEEP_ARGS="--sleep-requests ${{ github.event.inputs.sleep_requests }}"
+          fi
+          if [ -n "${{ github.event.inputs.sleep_interval }}" ]; then
+            SLEEP_ARGS="$SLEEP_ARGS --sleep-interval ${{ github.event.inputs.sleep_interval }}"
+          fi
+          if [ -n "${{ github.event.inputs.max_sleep_interval }}" ]; then
+            SLEEP_ARGS="$SLEEP_ARGS --max-sleep-interval ${{ github.event.inputs.max_sleep_interval }}"
+          fi
+          if [ -n "${{ github.event.inputs.limit_rate }}" ]; then
+            SLEEP_ARGS="$SLEEP_ARGS --limit-rate ${{ github.event.inputs.limit_rate }}"
+          fi
+
           set +o pipefail
           yt-dlp \
             --format "${{ steps.fmt.outputs.format }}" \
@@ -203,7 +234,7 @@ jobs:
             --add-metadata --geo-bypass \
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
             --merge-output-format mkv \
-            $COOKIES_ARG $SUBS_ARGS $THUMB_FLAG \
+            $COOKIES_ARG $SUBS_ARGS $THUMB_FLAG $SLEEP_ARGS \
             "$URL" 2>&1 | tee downloads/yt-dlp.log
           YT_EXIT=$?
           set -o pipefail
