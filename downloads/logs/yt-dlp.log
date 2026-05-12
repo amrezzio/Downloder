@@ -1,0 +1,312 @@
+[youtube:tab] Extracting URL: https://www.youtube.com/playlist?list=OLAK5uy_lE3St2ajPifN7UJIiSfFeZ31m5YDl1OMw
+[youtube:tab] OLAK5uy_lE3St2ajPifN7UJIiSfFeZ31m5YDl1OMw: Downloading webpage
+WARNING: [youtube:tab] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
+[youtube:tab] OLAK5uy_lE3St2ajPifN7UJIiSfFeZ31m5YDl1OMw: Redownloading playlist API JSON with unavailable videos
+WARNING: [youtube:tab] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
+[download] Downloading playlist: 86 EIGHTY-SIX original soundtrack
+[info] Downloading playlist thumbnail 2 ...
+[info] Playlist Thumbnail 2 does not exist
+[info] Downloading playlist thumbnail 1 ...
+[info] Writing playlist thumbnail 1 to: downloads/86 EIGHTY-SIX original soundtrack/86 EIGHTY-SIX original soundtrack.jpg
+[youtube:tab] Playlist 86 EIGHTY-SIX original soundtrack: Downloading 42 items of 42
+[download] Downloading item 1 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=ahDLQbhgW5Y
+[youtube] ahDLQbhgW5Y: Downloading webpage
+[youtube] ahDLQbhgW5Y: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] ahDLQbhgW5Y: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 2 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=yq-Taa-wNzg
+[youtube] yq-Taa-wNzg: Downloading webpage
+[youtube] yq-Taa-wNzg: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] yq-Taa-wNzg: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 3 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=_aAQbUIJQxE
+[youtube] _aAQbUIJQxE: Downloading webpage
+[youtube] _aAQbUIJQxE: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] _aAQbUIJQxE: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 4 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=E5f1_Yl0-jg
+[youtube] E5f1_Yl0-jg: Downloading webpage
+[youtube] E5f1_Yl0-jg: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] E5f1_Yl0-jg: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 5 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=Cxz-W6rNscM
+[youtube] Cxz-W6rNscM: Downloading webpage
+[youtube] Cxz-W6rNscM: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] Cxz-W6rNscM: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 6 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=v9INs1qqtIE
+[youtube] v9INs1qqtIE: Downloading webpage
+[youtube] v9INs1qqtIE: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] v9INs1qqtIE: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 7 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=k4763jBnuaw
+[youtube] k4763jBnuaw: Downloading webpage
+[youtube] k4763jBnuaw: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] k4763jBnuaw: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 8 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=wxLVXSEkXCs
+[youtube] wxLVXSEkXCs: Downloading webpage
+[youtube] wxLVXSEkXCs: Downloading tv downgraded player API JSON
+[youtube] wxLVXSEkXCs: Downloading player 8fb635c2-main
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] wxLVXSEkXCs: Downloading m3u8 information
+ERROR: [youtube] wxLVXSEkXCs: Requested format is not available. Use --list-formats for a list of available formats
+[download] Downloading item 9 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=u1uEvlwSUlQ
+[youtube] u1uEvlwSUlQ: Downloading webpage
+[youtube] u1uEvlwSUlQ: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] u1uEvlwSUlQ: Downloading m3u8 information
+[info] u1uEvlwSUlQ: Downloading 1 format(s): 140
+[info] There are no subtitles for the requested languages
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: downloads/Two-Side/Two-Side.webp
+[download] Destination: downloads/Two-Side/Two-Side.m4a
+[download]   0.0% of    4.21MiB at  442.76KiB/s ETA 00:09[download]   0.1% of    4.21MiB at    1.03MiB/s ETA 00:04[download]   0.2% of    4.21MiB at    2.09MiB/s ETA 00:02[download]   0.3% of    4.21MiB at    4.01MiB/s ETA 00:01[download]   0.7% of    4.21MiB at    6.19MiB/s ETA 00:00[download]   1.5% of    4.21MiB at    4.30MiB/s ETA 00:00[download]   2.9% of    4.21MiB at    1.46MiB/s ETA 00:02[download]   5.9% of    4.21MiB at    1.51MiB/s ETA 00:02[download]  11.8% of    4.21MiB at    1.92MiB/s ETA 00:01[download]  23.7% of    4.21MiB at    2.54MiB/s ETA 00:01[download]  47.4% of    4.21MiB at    3.76MiB/s ETA 00:00[download]  94.9% of    4.21MiB at    5.95MiB/s ETA 00:00[download] 100.0% of    4.21MiB at    6.21MiB/s ETA 00:00[download] 100% of    4.21MiB in 00:00:01 at 3.92MiB/s   
+[FixupM4a] Correcting container of "downloads/Two-Side/Two-Side.m4a"
+[Metadata] Adding metadata to "downloads/Two-Side/Two-Side.m4a"
+[download] Downloading item 10 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=4M5Uzv0U2a0
+[youtube] 4M5Uzv0U2a0: Downloading webpage
+[youtube] 4M5Uzv0U2a0: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] 4M5Uzv0U2a0: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 11 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=9apPYmrQ5Y4
+[youtube] 9apPYmrQ5Y4: Downloading webpage
+[youtube] 9apPYmrQ5Y4: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] 9apPYmrQ5Y4: Downloading m3u8 information
+ERROR: [youtube] 9apPYmrQ5Y4: Requested format is not available. Use --list-formats for a list of available formats
+[download] Downloading item 12 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=aBMR28AdNBc
+[youtube] aBMR28AdNBc: Downloading webpage
+[youtube] aBMR28AdNBc: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] aBMR28AdNBc: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 13 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=yydIbBk5dzQ
+[youtube] yydIbBk5dzQ: Downloading webpage
+[youtube] yydIbBk5dzQ: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] yydIbBk5dzQ: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 14 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=0mIRIlg0arw
+[youtube] 0mIRIlg0arw: Downloading webpage
+[youtube] 0mIRIlg0arw: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] 0mIRIlg0arw: Downloading m3u8 information
+ERROR: [youtube] 0mIRIlg0arw: Requested format is not available. Use --list-formats for a list of available formats
+[download] Downloading item 15 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=2kyv9rgs_rs
+[youtube] 2kyv9rgs_rs: Downloading webpage
+[youtube] 2kyv9rgs_rs: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] 2kyv9rgs_rs: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 16 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=CbsIj3uUNeI
+[youtube] CbsIj3uUNeI: Downloading webpage
+[youtube] CbsIj3uUNeI: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] CbsIj3uUNeI: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 17 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=I2qTtqePUXg
+[youtube] I2qTtqePUXg: Downloading webpage
+[youtube] I2qTtqePUXg: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] I2qTtqePUXg: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 18 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=dUKgxdqsAK0
+[youtube] dUKgxdqsAK0: Downloading webpage
+[youtube] dUKgxdqsAK0: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] dUKgxdqsAK0: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 19 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=ABrUiI6kh70
+[youtube] ABrUiI6kh70: Downloading webpage
+[youtube] ABrUiI6kh70: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] ABrUiI6kh70: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 20 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=S3lsOJyvQT8
+[youtube] S3lsOJyvQT8: Downloading webpage
+[youtube] S3lsOJyvQT8: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] S3lsOJyvQT8: Downloading m3u8 information
+ERROR: [youtube] S3lsOJyvQT8: Requested format is not available. Use --list-formats for a list of available formats
+[download] Downloading item 21 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=-3Xy9nkyxbU
+[youtube] -3Xy9nkyxbU: Downloading webpage
+[youtube] -3Xy9nkyxbU: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] -3Xy9nkyxbU: Downloading m3u8 information
+ERROR: [youtube] -3Xy9nkyxbU: Requested format is not available. Use --list-formats for a list of available formats
+[download] Downloading item 22 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=Feo72CUUQyI
+[youtube] Feo72CUUQyI: Downloading webpage
+[youtube] Feo72CUUQyI: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] Feo72CUUQyI: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 23 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=iVz5Plc8RT4
+[youtube] iVz5Plc8RT4: Downloading webpage
+[youtube] iVz5Plc8RT4: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] iVz5Plc8RT4: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 24 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=xhnmcvFjkGk
+[youtube] xhnmcvFjkGk: Downloading webpage
+[youtube] xhnmcvFjkGk: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] xhnmcvFjkGk: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 25 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=hGZGTpfRHsU
+[youtube] hGZGTpfRHsU: Downloading webpage
+[youtube] hGZGTpfRHsU: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] hGZGTpfRHsU: Downloading m3u8 information
+ERROR: [youtube] hGZGTpfRHsU: Requested format is not available. Use --list-formats for a list of available formats
+[download] Downloading item 26 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=7XgmQzkCCpo
+[youtube] 7XgmQzkCCpo: Downloading webpage
+[youtube] 7XgmQzkCCpo: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] 7XgmQzkCCpo: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 27 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=YNMAYCwiap0
+[youtube] YNMAYCwiap0: Downloading webpage
+[youtube] YNMAYCwiap0: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] YNMAYCwiap0: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 28 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=WEpznaLiPRU
+[youtube] WEpznaLiPRU: Downloading webpage
+[youtube] WEpznaLiPRU: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] WEpznaLiPRU: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 29 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=RL4vM-ztfzQ
+[youtube] RL4vM-ztfzQ: Downloading webpage
+[youtube] RL4vM-ztfzQ: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] RL4vM-ztfzQ: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 30 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=rEIMwub0p_U
+[youtube] rEIMwub0p_U: Downloading webpage
+[youtube] rEIMwub0p_U: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] rEIMwub0p_U: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 31 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=8M_h-X02jLY
+[youtube] 8M_h-X02jLY: Downloading webpage
+[youtube] 8M_h-X02jLY: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] 8M_h-X02jLY: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 32 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=SrcGIVULZQQ
+[youtube] SrcGIVULZQQ: Downloading webpage
+[youtube] SrcGIVULZQQ: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] SrcGIVULZQQ: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 33 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=kyQVqQFHlgo
+[youtube] kyQVqQFHlgo: Downloading webpage
+[youtube] kyQVqQFHlgo: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] kyQVqQFHlgo: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 34 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=PDtw9guncAQ
+[youtube] PDtw9guncAQ: Downloading webpage
+[youtube] PDtw9guncAQ: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] PDtw9guncAQ: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 35 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=zWMDTHA0CnQ
+[youtube] zWMDTHA0CnQ: Downloading webpage
+[youtube] zWMDTHA0CnQ: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] zWMDTHA0CnQ: Downloading m3u8 information
+[info] zWMDTHA0CnQ: Downloading 1 format(s): 140
+[info] There are no subtitles for the requested languages
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: downloads/Alive Today/Alive Today.webp
+[download] Destination: downloads/Alive Today/Alive Today.m4a
+[download]   0.0% of    2.35MiB at  665.34KiB/s ETA 00:03[download]   0.1% of    2.35MiB at    1.44MiB/s ETA 00:01[download]   0.3% of    2.35MiB at    2.81MiB/s ETA 00:00[download]   0.6% of    2.35MiB at    5.20MiB/s ETA 00:00[download]   1.3% of    2.35MiB at    5.67MiB/s ETA 00:00[download]   2.6% of    2.35MiB at    4.63MiB/s ETA 00:00[download]   5.3% of    2.35MiB at    1.58MiB/s ETA 00:01[download]  10.6% of    2.35MiB at    1.65MiB/s ETA 00:01[download]  21.3% of    2.35MiB at    2.08MiB/s ETA 00:00[download]  42.6% of    2.35MiB at    2.77MiB/s ETA 00:00[download]  85.2% of    2.35MiB at    4.09MiB/s ETA 00:00[download] 100.0% of    2.35MiB at    4.65MiB/s ETA 00:00[download] 100% of    2.35MiB in 00:00:00 at 2.67MiB/s   
+[FixupM4a] Correcting container of "downloads/Alive Today/Alive Today.m4a"
+[Metadata] Adding metadata to "downloads/Alive Today/Alive Today.m4a"
+[download] Downloading item 36 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=x56eWRJVOhM
+[youtube] x56eWRJVOhM: Downloading webpage
+[youtube] x56eWRJVOhM: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] x56eWRJVOhM: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 37 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=U0BJVa9Ro-c
+[youtube] U0BJVa9Ro-c: Downloading webpage
+[youtube] U0BJVa9Ro-c: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] U0BJVa9Ro-c: Downloading m3u8 information
+[info] U0BJVa9Ro-c: Downloading 1 format(s): 140
+[info] There are no subtitles for the requested languages
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: downloads/President me/President me.webp
+[download] Destination: downloads/President me/President me.m4a
+[download]   0.0% of    2.19MiB at  Unknown B/s ETA Unknown[download]   0.1% of    2.19MiB at    2.11MiB/s ETA 00:01  [download]   0.3% of    2.19MiB at    4.01MiB/s ETA 00:00[download]   0.7% of    2.19MiB at    7.07MiB/s ETA 00:00[download]   1.4% of    2.19MiB at    6.79MiB/s ETA 00:00[download]   2.8% of    2.19MiB at    4.94MiB/s ETA 00:00[download]   5.7% of    2.19MiB at    1.60MiB/s ETA 00:01[download]  11.4% of    2.19MiB at    1.65MiB/s ETA 00:01[download]  22.8% of    2.19MiB at    2.12MiB/s ETA 00:00[download]  45.7% of    2.19MiB at    2.82MiB/s ETA 00:00[download]  91.4% of    2.19MiB at    4.17MiB/s ETA 00:00[download] 100.0% of    2.19MiB at    4.47MiB/s ETA 00:00[download] 100% of    2.19MiB in 00:00:00 at 2.44MiB/s   
+[FixupM4a] Correcting container of "downloads/President me/President me.m4a"
+[Metadata] Adding metadata to "downloads/President me/President me.m4a"
+[download] Downloading item 38 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=cLCPtuoMBKk
+[youtube] cLCPtuoMBKk: Downloading webpage
+[youtube] cLCPtuoMBKk: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] cLCPtuoMBKk: Downloading m3u8 information
+ERROR: [youtube] cLCPtuoMBKk: Requested format is not available. Use --list-formats for a list of available formats
+[download] Downloading item 39 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=L68iG_XbGiE
+[youtube] L68iG_XbGiE: Downloading webpage
+[youtube] L68iG_XbGiE: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] L68iG_XbGiE: Downloading m3u8 information
+[info] L68iG_XbGiE: Downloading 1 format(s): 140
+[info] There are no subtitles for the requested languages
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: downloads/Reality/Reality.webp
+[download] Destination: downloads/Reality/Reality.m4a
+[download]   0.0% of    3.08MiB at  454.67KiB/s ETA 00:06[download]   0.1% of    3.08MiB at    1.10MiB/s ETA 00:02[download]   0.2% of    3.08MiB at    2.26MiB/s ETA 00:01[download]   0.5% of    3.08MiB at    4.37MiB/s ETA 00:00[download]   1.0% of    3.08MiB at    6.53MiB/s ETA 00:00[download]   2.0% of    3.08MiB at    4.62MiB/s ETA 00:00[download]   4.0% of    3.08MiB at    1.57MiB/s ETA 00:01[download]   8.1% of    3.08MiB at    1.64MiB/s ETA 00:01[download]  16.2% of    3.08MiB at    2.09MiB/s ETA 00:01[download]  32.4% of    3.08MiB at    2.78MiB/s ETA 00:00[download]  64.9% of    3.08MiB at    4.10MiB/s ETA 00:00[download] 100.0% of    3.08MiB at    5.49MiB/s ETA 00:00[download] 100% of    3.08MiB in 00:00:00 at 3.29MiB/s   
+[FixupM4a] Correcting container of "downloads/Reality/Reality.m4a"
+[Metadata] Adding metadata to "downloads/Reality/Reality.m4a"
+[download] Downloading item 40 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=i_TfB5RYHP0
+[youtube] i_TfB5RYHP0: Downloading webpage
+[youtube] i_TfB5RYHP0: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] i_TfB5RYHP0: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 41 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=hWE7XUytMpQ
+[youtube] hWE7XUytMpQ: Downloading webpage
+[youtube] hWE7XUytMpQ: Downloading android vr player API JSON
+WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
+ERROR: [youtube] hWE7XUytMpQ: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[download] Downloading item 42 of 42
+[youtube] Extracting URL: https://www.youtube.com/watch?v=2Ie3kebsqqo
+[youtube] 2Ie3kebsqqo: Downloading webpage
+[youtube] 2Ie3kebsqqo: Downloading tv downgraded player API JSON
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] 2Ie3kebsqqo: Downloading m3u8 information
+[info] 2Ie3kebsqqo: Downloading 1 format(s): 140
+[info] There are no subtitles for the requested languages
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: downloads/MORPHO/MORPHO.webp
+[download] Destination: downloads/MORPHO/MORPHO.m4a
+[download]   0.0% of    3.73MiB at  208.10KiB/s ETA 00:18[download]   0.1% of    3.73MiB at  562.04KiB/s ETA 00:06[download]   0.2% of    3.73MiB at    1.20MiB/s ETA 00:03[download]   0.4% of    3.73MiB at    2.40MiB/s ETA 00:01[download]   0.8% of    3.73MiB at  513.39KiB/s ETA 00:07[download]   1.6% of    3.73MiB at  569.86KiB/s ETA 00:06[download]   3.3% of    3.73MiB at  772.46KiB/s ETA 00:04[download]   6.7% of    3.73MiB at    1.09MiB/s ETA 00:03[download]  13.4% of    3.73MiB at    1.54MiB/s ETA 00:02[download]  26.8% of    3.73MiB at    2.45MiB/s ETA 00:01[download]  53.6% of    3.73MiB at    3.94MiB/s ETA 00:00[download] 100.0% of    3.73MiB at    6.18MiB/s ETA 00:00[download] 100% of    3.73MiB in 00:00:01 at 3.62MiB/s   
+[FixupM4a] Correcting container of "downloads/MORPHO/MORPHO.m4a"
+[Metadata] Adding metadata to "downloads/MORPHO/MORPHO.m4a"
+[download] Finished downloading playlist: 86 EIGHTY-SIX original soundtrack
