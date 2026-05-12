@@ -83,24 +83,24 @@ jobs:
         run: |
           mkdir -p downloads
           URL="${{ github.event.inputs.url }}"
-          # Extract video title (safe for folder name)
-          TITLE=$(yt-dlp --print title "$URL" 2>/dev/null || echo "simulation")
-          # Clean up title for folder (replace problematic chars)
+          # Try to get title; if fails, use "unknown-video" as folder name
+          TITLE=$(yt-dlp --print title "$URL" 2>/dev/null || echo "unknown-video")
           SAFE_TITLE=$(echo "$TITLE" | tr -dc '[:alnum:] [:space:]-_' | sed 's/  */ /g' | sed 's/^ *//;s/ *$//')
           FOLDER="downloads/${SAFE_TITLE}"
           mkdir -p "$FOLDER"
-          echo "Listing formats for: $URL" | tee "$FOLDER/formats.txt"
-          echo "======================================================" | tee -a "$FOLDER/formats.txt"
-          yt-dlp -F "$URL" 2>&1 | tee -a "$FOLDER/formats.txt"
-          echo "" | tee -a "$FOLDER/formats.txt"
-          echo "Use the IDs from the left column in 'format_code' for your next run." | tee -a "$FOLDER/formats.txt"
 
-      - name: "Upload simulation output"
-        if: ${{ github.event.inputs.simulate == 'true' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: simulation-output
-          path: downloads/*
+          # Temporarily disable exit-on-error for yt-dlp
+          set +o pipefail
+          yt-dlp -F "$URL" 2>&1 | tee "$FOLDER/formats.txt"
+          YT_EXIT=$?
+          set -o pipefail
+
+          if [ $YT_EXIT -ne 0 ]; then
+            echo "ERROR: yt-dlp could not fetch format list. Possibly invalid URL or restricted content." | tee -a "$FOLDER/formats.txt"
+          else
+            echo "" >> "$FOLDER/formats.txt"
+            echo "Use the IDs from the left column in 'format_code' for your next run." >> "$FOLDER/formats.txt"
+          fi
 
       # ---------------- ACTUAL DOWNLOAD MODE ----------------
       - name: "Build format string"
