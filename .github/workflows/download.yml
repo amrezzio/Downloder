@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       url:
-        description: 'Video/Playlist URL'
+        description: 'Video | Playlist URL'
         required: true
       simulate:
         description: 'Simulate only (list available formats, no download)'
@@ -17,19 +17,19 @@ on:
         type: choice
         default: 'video+audio'
         options:
-          - 'audio_only'
-          - 'video+audio'
+          - 'audio only'
+          - 'video + audio'
       format_code:
         description: 'Custom format code (overrides quality fields if set)'
         required: false
         default: ''
       video_quality:
-        description: 'Max video height (leave empty for best)'
+        description: 'Max video quality'
         required: false
         type: choice
         default: ''
         options:
-          - ''
+          - 'best'
           - '2160p'
           - '1440p'
           - '1080p'
@@ -37,12 +37,12 @@ on:
           - '480p'
           - '360p'
       audio_quality:
-        description: 'Max audio bitrate (leave empty for best)'
+        description: 'Max audio bitrate'
         required: false
         type: choice
         default: ''
         options:
-          - ''
+          - 'best'
           - '320k'
           - '256k'
           - '192k'
@@ -76,7 +76,6 @@ jobs:
       - name: "Checkout repository"
         uses: actions/checkout@v4
 
-      # از اینجا به بعد همه چیز داخل downloads/logs ثبت می‌شود
       - name: "Prepare log directory"
         run: mkdir -p downloads/logs
 
@@ -114,7 +113,6 @@ jobs:
             echo "No cookies secret set, proceeding without authentication." | tee downloads/logs/cookies.log
           fi
 
-      # ---------------- SIMULATE MODE ----------------
       - name: "Simulate: List available formats"
         if: ${{ github.event.inputs.simulate == 'true' }}
         run: |
@@ -150,7 +148,6 @@ jobs:
           git pull --rebase origin ${{ github.ref }} || true
           git push origin ${{ github.ref }}
 
-      # ---------------- ACTUAL DOWNLOAD MODE ----------------
       - name: "Build format string"
         id: fmt
         if: ${{ github.event.inputs.simulate == 'false' }}
@@ -236,7 +233,7 @@ jobs:
             (cd "$VIDEO_FOLDER" && zip "$ZIPNAME" "$BASENAME" && rm "$BASENAME")
           fi
 
-      # ---------------- مرحله نهایی (همیشه اجرا شود و همه چیز را push کند) ----------------
+
       - name: "Commit all logs and any output to repository"
         if: always()
         run: |
