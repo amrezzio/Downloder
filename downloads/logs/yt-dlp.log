@@ -1,7 +1,22 @@
-[youtube] Extracting URL: https://www.youtube.com/watch?v=qBwVwPvhVgU
-[youtube] qBwVwPvhVgU: Downloading webpage
-WARNING: [youtube] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
+[youtube] Extracting URL: https://youtu.be/bBukpXGjzvc?si=WLQRL1sV1uxhJBsD
+[youtube] bBukpXGjzvc: Downloading webpage
 [youtube] Sleeping 2.0 seconds ...
-[youtube] qBwVwPvhVgU: Downloading android vr player API JSON
-WARNING: [youtube] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
-ERROR: [youtube] qBwVwPvhVgU: Video unavailable. This video contains content from SME, who has blocked it in your country on copyright grounds
+[youtube] bBukpXGjzvc: Downloading tv downgraded player API JSON
+[youtube] Sleeping 2.0 seconds ...
+[youtube] bBukpXGjzvc: Downloading player 2d01abf7-main
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] bBukpXGjzvc: Downloading m3u8 information
+[info] bBukpXGjzvc: Downloading 1 format(s): 248+251
+[info] Downloading video thumbnail 41 ...
+[info] Writing video thumbnail 41 to: downloads/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ.webp
+[download] Sleeping 15.19 seconds ...
+[download] Destination: downloads/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ.f248.webm
+[download]   0.0% of    7.01MiB at  Unknown B/s ETA Unknown[download]   0.0% of    7.01MiB at    1.36MiB/s ETA 00:05  [download]   0.1% of    7.01MiB at    1.75MiB/s ETA 00:03[download]   0.2% of    7.01MiB at    1.89MiB/s ETA 00:03[download]   0.4% of    7.01MiB at    1.94MiB/s ETA 00:03[download]   0.9% of    7.01MiB at    1.94MiB/s ETA 00:03[download]   1.8% of    7.01MiB at    1.97MiB/s ETA 00:03[download]   3.6% of    7.01MiB at    1.88MiB/s ETA 00:03[download]   7.1% of    7.01MiB at    1.90MiB/s ETA 00:03[download]  14.3% of    7.01MiB at    1.94MiB/s ETA 00:03[download]  28.5% of    7.01MiB at    1.96MiB/s ETA 00:02[download]  57.0% of    7.01MiB at    1.99MiB/s ETA 00:01[download]  85.7% of    7.01MiB at    2.00MiB/s ETA 00:00[download] 100.0% of    7.01MiB at    2.00MiB/s ETA 00:00[download] 100% of    7.01MiB in 00:00:03 at 1.95MiB/s   
+[download] Sleeping 15.07 seconds ...
+[download] Destination: downloads/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ.f251.webm
+[download]   0.2% of  537.55KiB at  Unknown B/s ETA Unknown[download]   0.6% of  537.55KiB at    1.46MiB/s ETA 00:00  [download]   1.3% of  537.55KiB at    1.78MiB/s ETA 00:00[download]   2.8% of  537.55KiB at    1.90MiB/s ETA 00:00[download]   5.8% of  537.55KiB at    1.92MiB/s ETA 00:00[download]  11.7% of  537.55KiB at    1.97MiB/s ETA 00:00[download]  23.6% of  537.55KiB at    1.98MiB/s ETA 00:00[download]  47.4% of  537.55KiB at    1.99MiB/s ETA 00:00[download]  95.1% of  537.55KiB at    1.87MiB/s ETA 00:00[download] 100.0% of  537.55KiB at    1.96MiB/s ETA 00:00[download] 100% of  537.55KiB in 00:00:00 at 1.67MiB/s   
+[Merger] Merging formats into "downloads/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ.mkv"
+Deleting original file downloads/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ.f248.webm (pass -k to keep)
+Deleting original file downloads/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ.f251.webm (pass -k to keep)
+[Metadata] Adding metadata to "downloads/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ/86 • Eighty Six (AMV⧸Edit) - Shin meets Lena • Jungleᴴᴰ.mkv"
