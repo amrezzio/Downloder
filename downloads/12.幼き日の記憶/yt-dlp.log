@@ -1,17 +1,17 @@
-[youtube] Extracting URL: https://youtu.be/0xf65u4z8d4?si=CYUkbxuqDzl9Rzzs
-[youtube] 0xf65u4z8d4: Downloading webpage
+[youtube] Extracting URL: https://youtu.be/-_na_qwOhFE?si=itVZ-RgHzMDvnP-d
+[youtube] -_na_qwOhFE: Downloading webpage
 [youtube] Sleeping 2.0 seconds ...
-[youtube] 0xf65u4z8d4: Downloading tv downgraded player API JSON
+[youtube] -_na_qwOhFE: Downloading tv downgraded player API JSON
 [youtube] Sleeping 2.0 seconds ...
-[youtube] 0xf65u4z8d4: Downloading player 2d01abf7-main
+[youtube] -_na_qwOhFE: Downloading player 2d01abf7-main
 [youtube] [jsc:deno] Solving JS challenges using deno
 [youtube] Sleeping 2.0 seconds ...
-[youtube] 0xf65u4z8d4: Downloading m3u8 information
-[info] 0xf65u4z8d4: Downloading 1 format(s): 140
+[youtube] -_na_qwOhFE: Downloading m3u8 information
+[info] -_na_qwOhFE: Downloading 1 format(s): 140
 [info] Downloading video thumbnail 42 ...
-[info] Writing video thumbnail 42 to: downloads/Eternxlkz - SOBE A MÃO (Official Audio)/Eternxlkz - SOBE A MÃO (Official Audio).webp
-[download] Sleeping 10.96 seconds ...
-[download] Destination: downloads/Eternxlkz - SOBE A MÃO (Official Audio)/Eternxlkz - SOBE A MÃO (Official Audio).m4a
-[download]   0.1% of    1.86MiB at  222.92KiB/s ETA 00:08[download]   0.2% of    1.86MiB at  593.20KiB/s ETA 00:03[download]   0.4% of    1.86MiB at    1.26MiB/s ETA 00:01[download]   0.8% of    1.86MiB at    1.87MiB/s ETA 00:00[download]   1.6% of    1.86MiB at  513.33KiB/s ETA 00:03[download]   3.3% of    1.86MiB at  637.70KiB/s ETA 00:02[download]   6.7% of    1.86MiB at  881.33KiB/s ETA 00:02[download]  13.4% of    1.86MiB at    1.24MiB/s ETA 00:01[download]  26.8% of    1.86MiB at    1.50MiB/s ETA 00:00[download]  53.6% of    1.86MiB at    1.80MiB/s ETA 00:00[download] 100.0% of    1.86MiB at    1.90MiB/s ETA 00:00[download] 100% of    1.86MiB in 00:00:01 at 1.57MiB/s   
-[FixupM4a] Correcting container of "downloads/Eternxlkz - SOBE A MÃO (Official Audio)/Eternxlkz - SOBE A MÃO (Official Audio).m4a"
-[Metadata] Adding metadata to "downloads/Eternxlkz - SOBE A MÃO (Official Audio)/Eternxlkz - SOBE A MÃO (Official Audio).m4a"
+[info] Writing video thumbnail 42 to: downloads/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio)/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio).webp
+[download] Sleeping 10.51 seconds ...
+[download] Destination: downloads/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio)/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio).m4a
+[download]   0.1% of    1.87MiB at   76.43KiB/s ETA 00:25[download]   0.2% of    1.87MiB at  220.33KiB/s ETA 00:08[download]   0.4% of    1.87MiB at  500.68KiB/s ETA 00:03[download]   0.8% of    1.87MiB at    1.03MiB/s ETA 00:01[download]   1.6% of    1.87MiB at  402.25KiB/s ETA 00:04[download]   3.3% of    1.87MiB at  469.76KiB/s ETA 00:03[download]   6.6% of    1.87MiB at  635.26KiB/s ETA 00:02[download]  13.3% of    1.87MiB at  912.59KiB/s ETA 00:01[download]  26.7% of    1.87MiB at    1.31MiB/s ETA 00:01[download]  53.5% of    1.87MiB at    1.65MiB/s ETA 00:00[download] 100.0% of    1.87MiB at    1.84MiB/s ETA 00:00[download] 100% of    1.87MiB in 00:00:01 at 1.47MiB/s   
+[FixupM4a] Correcting container of "downloads/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio)/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio).m4a"
+[Metadata] Adding metadata to "downloads/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio)/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio).m4a"
