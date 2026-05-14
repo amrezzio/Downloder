@@ -1,8 +1,8 @@
-[youtube] Extracting URL: https://youtu.be/0xf65u4z8d4?si=b0CUNXg_4cGkX454
-[youtube] 0xf65u4z8d4: Downloading webpage
+[youtube] Extracting URL: https://youtu.be/-_na_qwOhFE?si=QDgho9EygLqvDG-K
+[youtube] -_na_qwOhFE: Downloading webpage
 WARNING: [youtube] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
 [youtube] Sleeping 2.0 seconds ...
-[youtube] 0xf65u4z8d4: Downloading android vr player API JSON
+[youtube] -_na_qwOhFE: Downloading android vr player API JSON
 WARNING: [youtube] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
 WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
-ERROR: [youtube] 0xf65u4z8d4: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+ERROR: [youtube] -_na_qwOhFE: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
