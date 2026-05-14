@@ -1,17 +1,17 @@
-[youtube] Extracting URL: https://youtu.be/wR6ShvbewFc?si=qKn8lzhtgrBtxS8C
-[youtube] wR6ShvbewFc: Downloading webpage
+[youtube] Extracting URL: https://youtu.be/d28Zg4PNMuw?si=GVaL8dZ6ND0TpwFl
+[youtube] d28Zg4PNMuw: Downloading webpage
 [youtube] Sleeping 2.0 seconds ...
-[youtube] wR6ShvbewFc: Downloading tv downgraded player API JSON
+[youtube] d28Zg4PNMuw: Downloading tv downgraded player API JSON
 [youtube] Sleeping 2.0 seconds ...
-[youtube] wR6ShvbewFc: Downloading player 2d01abf7-main
+[youtube] d28Zg4PNMuw: Downloading player 2d01abf7-main
 [youtube] [jsc:deno] Solving JS challenges using deno
 [youtube] Sleeping 2.0 seconds ...
-[youtube] wR6ShvbewFc: Downloading m3u8 information
-[info] wR6ShvbewFc: Downloading 1 format(s): 140
+[youtube] d28Zg4PNMuw: Downloading m3u8 information
+[info] d28Zg4PNMuw: Downloading 1 format(s): 140
 [info] Downloading video thumbnail 42 ...
-[info] Writing video thumbnail 42 to: downloads/Eternxlkz - FLORES BRANCAS (Official Audio)/Eternxlkz - FLORES BRANCAS (Official Audio).webp
-[download] Sleeping 19.08 seconds ...
-[download] Destination: downloads/Eternxlkz - FLORES BRANCAS (Official Audio)/Eternxlkz - FLORES BRANCAS (Official Audio).m4a
-[download]   0.1% of    1.56MiB at  Unknown B/s ETA Unknown[download]   0.2% of    1.56MiB at    1.47MiB/s ETA 00:01  [download]   0.4% of    1.56MiB at    1.76MiB/s ETA 00:00[download]   0.9% of    1.56MiB at    1.88MiB/s ETA 00:00[download]   1.9% of    1.56MiB at    1.93MiB/s ETA 00:00[download]   3.9% of    1.56MiB at    1.96MiB/s ETA 00:00[download]   7.9% of    1.56MiB at    1.98MiB/s ETA 00:00[download]  15.9% of    1.56MiB at    1.97MiB/s ETA 00:00[download]  31.9% of    1.56MiB at    1.99MiB/s ETA 00:00[download]  63.9% of    1.56MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    1.56MiB at    1.99MiB/s ETA 00:00[download] 100% of    1.56MiB in 00:00:00 at 1.71MiB/s   
-[FixupM4a] Correcting container of "downloads/Eternxlkz - FLORES BRANCAS (Official Audio)/Eternxlkz - FLORES BRANCAS (Official Audio).m4a"
-[Metadata] Adding metadata to "downloads/Eternxlkz - FLORES BRANCAS (Official Audio)/Eternxlkz - FLORES BRANCAS (Official Audio).m4a"
+[info] Writing video thumbnail 42 to: downloads/Eternxlkz - LENTO FUERTE (Official Audio)/Eternxlkz - LENTO FUERTE (Official Audio).webp
+[download] Sleeping 19.93 seconds ...
+[download] Destination: downloads/Eternxlkz - LENTO FUERTE (Official Audio)/Eternxlkz - LENTO FUERTE (Official Audio).m4a
+[download]   0.0% of    2.59MiB at  Unknown B/s ETA Unknown[download]   0.1% of    2.59MiB at    1.45MiB/s ETA 00:01  [download]   0.3% of    2.59MiB at    1.76MiB/s ETA 00:01[download]   0.6% of    2.59MiB at    1.89MiB/s ETA 00:01[download]   1.2% of    2.59MiB at    1.93MiB/s ETA 00:01[download]   2.4% of    2.59MiB at    1.96MiB/s ETA 00:01[download]   4.8% of    2.59MiB at    1.98MiB/s ETA 00:01[download]   9.6% of    2.59MiB at    1.95MiB/s ETA 00:01[download]  19.2% of    2.59MiB at    1.98MiB/s ETA 00:01[download]  38.5% of    2.59MiB at    1.99MiB/s ETA 00:00[download]  77.1% of    2.59MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    2.59MiB at    2.00MiB/s ETA 00:00[download] 100% of    2.59MiB in 00:00:01 at 1.76MiB/s   
+[FixupM4a] Correcting container of "downloads/Eternxlkz - LENTO FUERTE (Official Audio)/Eternxlkz - LENTO FUERTE (Official Audio).m4a"
+[Metadata] Adding metadata to "downloads/Eternxlkz - LENTO FUERTE (Official Audio)/Eternxlkz - LENTO FUERTE (Official Audio).m4a"
