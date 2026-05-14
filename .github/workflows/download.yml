@@ -69,15 +69,15 @@ on:
       sleep_requests:
         description: 'Sleep between HTTP requests (seconds)'
         required: false
-        default: '10'
+        default: '2'
       sleep_interval:
         description: 'Sleep interval before each download (seconds)'
         required: false
-        default: ''
+        default: '10'
       max_sleep_interval:
         description: 'Max random sleep before each download (seconds)'
         required: false
-        default: ''
+        default: '20'
       limit_rate:
         description: 'Maximum download rate (e.g. 2M, 500K)'
         required: false
