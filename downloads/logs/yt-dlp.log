@@ -1,17 +1,17 @@
-[youtube] Extracting URL: https://youtu.be/-_na_qwOhFE?si=itVZ-RgHzMDvnP-d
-[youtube] -_na_qwOhFE: Downloading webpage
+[youtube] Extracting URL: https://youtu.be/wR6ShvbewFc?si=qKn8lzhtgrBtxS8C
+[youtube] wR6ShvbewFc: Downloading webpage
 [youtube] Sleeping 2.0 seconds ...
-[youtube] -_na_qwOhFE: Downloading tv downgraded player API JSON
+[youtube] wR6ShvbewFc: Downloading tv downgraded player API JSON
 [youtube] Sleeping 2.0 seconds ...
-[youtube] -_na_qwOhFE: Downloading player 2d01abf7-main
+[youtube] wR6ShvbewFc: Downloading player 2d01abf7-main
 [youtube] [jsc:deno] Solving JS challenges using deno
 [youtube] Sleeping 2.0 seconds ...
-[youtube] -_na_qwOhFE: Downloading m3u8 information
-[info] -_na_qwOhFE: Downloading 1 format(s): 140
+[youtube] wR6ShvbewFc: Downloading m3u8 information
+[info] wR6ShvbewFc: Downloading 1 format(s): 140
 [info] Downloading video thumbnail 42 ...
-[info] Writing video thumbnail 42 to: downloads/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio)/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio).webp
-[download] Sleeping 10.51 seconds ...
-[download] Destination: downloads/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio)/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio).m4a
-[download]   0.1% of    1.87MiB at   76.43KiB/s ETA 00:25[download]   0.2% of    1.87MiB at  220.33KiB/s ETA 00:08[download]   0.4% of    1.87MiB at  500.68KiB/s ETA 00:03[download]   0.8% of    1.87MiB at    1.03MiB/s ETA 00:01[download]   1.6% of    1.87MiB at  402.25KiB/s ETA 00:04[download]   3.3% of    1.87MiB at  469.76KiB/s ETA 00:03[download]   6.6% of    1.87MiB at  635.26KiB/s ETA 00:02[download]  13.3% of    1.87MiB at  912.59KiB/s ETA 00:01[download]  26.7% of    1.87MiB at    1.31MiB/s ETA 00:01[download]  53.5% of    1.87MiB at    1.65MiB/s ETA 00:00[download] 100.0% of    1.87MiB at    1.84MiB/s ETA 00:00[download] 100% of    1.87MiB in 00:00:01 at 1.47MiB/s   
-[FixupM4a] Correcting container of "downloads/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio)/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio).m4a"
-[Metadata] Adding metadata to "downloads/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio)/Eternxlkz, Rezcaze - SLAY FUNK (Official Audio).m4a"
+[info] Writing video thumbnail 42 to: downloads/Eternxlkz - FLORES BRANCAS (Official Audio)/Eternxlkz - FLORES BRANCAS (Official Audio).webp
+[download] Sleeping 19.08 seconds ...
+[download] Destination: downloads/Eternxlkz - FLORES BRANCAS (Official Audio)/Eternxlkz - FLORES BRANCAS (Official Audio).m4a
+[download]   0.1% of    1.56MiB at  Unknown B/s ETA Unknown[download]   0.2% of    1.56MiB at    1.47MiB/s ETA 00:01  [download]   0.4% of    1.56MiB at    1.76MiB/s ETA 00:00[download]   0.9% of    1.56MiB at    1.88MiB/s ETA 00:00[download]   1.9% of    1.56MiB at    1.93MiB/s ETA 00:00[download]   3.9% of    1.56MiB at    1.96MiB/s ETA 00:00[download]   7.9% of    1.56MiB at    1.98MiB/s ETA 00:00[download]  15.9% of    1.56MiB at    1.97MiB/s ETA 00:00[download]  31.9% of    1.56MiB at    1.99MiB/s ETA 00:00[download]  63.9% of    1.56MiB at    1.99MiB/s ETA 00:00[download] 100.0% of    1.56MiB at    1.99MiB/s ETA 00:00[download] 100% of    1.56MiB in 00:00:00 at 1.71MiB/s   
+[FixupM4a] Correcting container of "downloads/Eternxlkz - FLORES BRANCAS (Official Audio)/Eternxlkz - FLORES BRANCAS (Official Audio).m4a"
+[Metadata] Adding metadata to "downloads/Eternxlkz - FLORES BRANCAS (Official Audio)/Eternxlkz - FLORES BRANCAS (Official Audio).m4a"
