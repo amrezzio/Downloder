@@ -11,9 +11,60 @@ def sanitize_filename(name: str) -> str:
     """Remove invalid characters for filenames."""
     return re.sub(r'[\\/*?:"<>|]', "_", name)
 
-async def save_mhtml_and_extract_links(url: str, output_mhtml: str, output_links_txt: str, max_retries: int = 3):
+async def simulate_hover_on_elements(page, selectors=None):
     """
-    Save webpage as MHTML and extract all <a> href links into a text file.
+    Simulate mouse hover over interactive elements to trigger dynamic content.
+    If selectors not provided, will try common interactive elements.
+    """
+    if selectors is None:
+        # Common interactive elements that may reveal content on hover
+        selectors = [
+            'button', 'a', '[role="button"]', '[data-hover]', 
+            '.dropdown-trigger', '.menu-trigger', '.hover-trigger',
+            '.has-dropdown', '.nav-item', '.menu-item',
+            '[onmouseenter]', '[onmouseover]'
+        ]
+    
+    print("🖱️ Simulating hover on interactive elements...")
+    hovered_count = 0
+    for selector in selectors:
+        try:
+            elements = await page.locator(selector).all()
+            for elem in elements:
+                try:
+                    if await elem.is_visible() and await elem.is_enabled():
+                        await elem.hover()
+                        hovered_count += 1
+                        await asyncio.sleep(0.1)  # small delay for content to appear
+                except:
+                    pass
+        except:
+            pass
+    print(f"🖱️ Hovered over {hovered_count} elements.")
+
+async def scroll_page(page):
+    """Scroll the page gradually to trigger lazy loading."""
+    print("📜 Scrolling page to load lazy content...")
+    await page.evaluate("""
+        async () => {
+            const scrollStep = 500;
+            const delay = 100;
+            let currentScroll = 0;
+            const maxScroll = document.body.scrollHeight - window.innerHeight;
+            while (currentScroll < maxScroll) {
+                window.scrollBy(0, scrollStep);
+                currentScroll += scrollStep;
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+            // Scroll back to top
+            window.scrollTo(0, 0);
+        }
+    """)
+    await asyncio.sleep(1)
+
+async def save_mhtml(url: str, output_file: str, max_retries: int = 3):
+    """
+    Save webpage as MHTML after simulating user interactions (hover, scroll).
     """
     for attempt in range(1, max_retries + 1):
         try:
@@ -32,60 +83,59 @@ async def save_mhtml_and_extract_links(url: str, output_mhtml: str, output_links
                 context = await browser.new_context(
                     ignore_https_errors=True,
                     user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                    viewport={'width': 1920, 'height': 1080}
+                    viewport={'width': 1920, 'height': 1080},
+                    locale='en-US',
+                    timezone_id='America/New_York'
                 )
                 page = await context.new_page()
 
-                # Simple stealth
+                # Stealth script to hide automation
                 await page.add_init_script("""
                     Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
                     window.chrome = { runtime: {} };
+                    Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
                 """)
 
                 print(f"🌐 Navigating to {url}...")
                 await page.goto(url, wait_until='domcontentloaded', timeout=60000)
-                await asyncio.sleep(2)  # initial stabilization
+                await asyncio.sleep(3)  # initial stabilization
 
-                # Extract all <a> href links
-                print("🔗 Extracting all links from the page...")
-                links = await page.eval_on_selector_all('a', 'els => els.map(el => el.href)')
-                # Filter out empty or non-http(s) links
-                links = [link for link in links if link and link.startswith(('http://', 'https://'))]
-                # Remove duplicates preserving order
-                unique_links = list(dict.fromkeys(links))
-                print(f"📌 Found {len(unique_links)} unique links.")
+                # Scroll to trigger lazy loading
+                await scroll_page(page)
+                await asyncio.sleep(2)
 
-                # Save links to text file
-                with open(output_links_txt, 'w', encoding='utf-8') as f:
-                    for link in unique_links:
-                        f.write(link + '\n')
-                print(f"💾 Links saved to {output_links_txt}")
+                # Simulate hover on interactive elements
+                await simulate_hover_on_elements(page)
+                await asyncio.sleep(2)  # let dynamic content settle
 
-                # Capture MHTML
+                # One more small scroll to capture any revealed content
+                await page.evaluate("window.scrollBy(0, 100);")
+                await asyncio.sleep(1)
+
                 print("📸 Taking MHTML snapshot...")
                 cdp_session = await page.context.new_cdp_session(page)
                 mhtml_data = await cdp_session.send('Page.captureSnapshot')
-                with open(output_mhtml, 'wb') as f:
+
+                with open(output_file, 'wb') as f:
                     f.write(mhtml_data['data'].encode())
 
                 await browser.close()
-                print(f"✅ Successfully saved MHTML: {output_mhtml}")
-                return True
+                print(f"✅ Successfully saved {url} (attempt {attempt})")
+                return
 
         except (PlaywrightTimeoutError, Exception) as e:
-            print(f"⚠️ Attempt {attempt} failed: {str(e)[:200]}")
+            print(f"⚠️ Attempt {attempt} failed for {url}: {str(e)[:200]}")
             if attempt == max_retries:
-                print(f"❌ Failed after {max_retries} attempts.")
-                return False
+                raise
             await asyncio.sleep(5)
 
 def main():
-    parser = argparse.ArgumentParser(description="Download webpage as MHTML and extract all links.")
+    parser = argparse.ArgumentParser(description="Download webpage as MHTML with full dynamic content (hover + scroll).")
     parser.add_argument("--url", required=True, help="URL of the page to download")
-    parser.add_argument("--title", help="Optional title for output files (without extension)")
+    parser.add_argument("--title", help="Optional title for the output file")
     args = parser.parse_args()
 
-    # Determine base name
+    # Determine output filename
     if args.title:
         base_name = sanitize_filename(args.title)
     else:
@@ -99,37 +149,24 @@ def main():
             base_name = "webpage"
 
     mhtml_filename = f"{base_name}.mhtml"
-    links_filename = f"{base_name}_links.txt"
     zip_filename = f"{base_name}.zip"
 
-    # Create directories
     download_dir = "download"
     os.makedirs(download_dir, exist_ok=True)
     os.makedirs("temp", exist_ok=True)
 
     mhtml_path = os.path.join("temp", mhtml_filename)
-    links_path = os.path.join("temp", links_filename)
     zip_path = os.path.join(download_dir, zip_filename)
 
-    print(f"🚀 Starting: {args.url}")
-    success = asyncio.run(save_mhtml_and_extract_links(args.url, mhtml_path, links_path))
+    print(f"🚀 Starting enhanced download: {args.url}")
+    asyncio.run(save_mhtml(args.url, mhtml_path))
 
-    if not success:
-        print("❌ Download failed. Exiting.")
-        shutil.rmtree("temp", ignore_errors=True)
-        sys.exit(1)
-
-    # Create ZIP with both files
     with zipfile.ZipFile(zip_path, 'w') as zf:
         zf.write(mhtml_path, arcname=mhtml_filename)
-        zf.write(links_path, arcname=links_filename)
 
-    # Cleanup
     shutil.rmtree("temp", ignore_errors=True)
 
-    print(f"✅ Completed! Created {zip_path}")
-    print(f"   Contains: {mhtml_filename} and {links_filename}")
+    print(f"✅ Completed! File saved at: {zip_path}")
 
 if __name__ == "__main__":
-    import sys
     main()
