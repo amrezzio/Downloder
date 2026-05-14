@@ -1,8 +1,17 @@
-[youtube] Extracting URL: https://youtu.be/d28Zg4PNMuw?si=3WF4NrwOrpkUUIg3
-[youtube] d28Zg4PNMuw: Downloading webpage
-WARNING: [youtube] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
+[youtube] Extracting URL: https://youtu.be/0xf65u4z8d4?si=CYUkbxuqDzl9Rzzs
+[youtube] 0xf65u4z8d4: Downloading webpage
 [youtube] Sleeping 2.0 seconds ...
-[youtube] d28Zg4PNMuw: Downloading android vr player API JSON
-WARNING: [youtube] The provided YouTube account cookies are no longer valid. They have likely been rotated in the browser as a security measure. For tips on how to effectively export YouTube cookies, refer to  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies .
-WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing
-ERROR: [youtube] d28Zg4PNMuw: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies
+[youtube] 0xf65u4z8d4: Downloading tv downgraded player API JSON
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 0xf65u4z8d4: Downloading player 2d01abf7-main
+[youtube] [jsc:deno] Solving JS challenges using deno
+[youtube] Sleeping 2.0 seconds ...
+[youtube] 0xf65u4z8d4: Downloading m3u8 information
+[info] 0xf65u4z8d4: Downloading 1 format(s): 140
+[info] Downloading video thumbnail 42 ...
+[info] Writing video thumbnail 42 to: downloads/Eternxlkz - SOBE A MÃO (Official Audio)/Eternxlkz - SOBE A MÃO (Official Audio).webp
+[download] Sleeping 10.96 seconds ...
+[download] Destination: downloads/Eternxlkz - SOBE A MÃO (Official Audio)/Eternxlkz - SOBE A MÃO (Official Audio).m4a
+[download]   0.1% of    1.86MiB at  222.92KiB/s ETA 00:08[download]   0.2% of    1.86MiB at  593.20KiB/s ETA 00:03[download]   0.4% of    1.86MiB at    1.26MiB/s ETA 00:01[download]   0.8% of    1.86MiB at    1.87MiB/s ETA 00:00[download]   1.6% of    1.86MiB at  513.33KiB/s ETA 00:03[download]   3.3% of    1.86MiB at  637.70KiB/s ETA 00:02[download]   6.7% of    1.86MiB at  881.33KiB/s ETA 00:02[download]  13.4% of    1.86MiB at    1.24MiB/s ETA 00:01[download]  26.8% of    1.86MiB at    1.50MiB/s ETA 00:00[download]  53.6% of    1.86MiB at    1.80MiB/s ETA 00:00[download] 100.0% of    1.86MiB at    1.90MiB/s ETA 00:00[download] 100% of    1.86MiB in 00:00:01 at 1.57MiB/s   
+[FixupM4a] Correcting container of "downloads/Eternxlkz - SOBE A MÃO (Official Audio)/Eternxlkz - SOBE A MÃO (Official Audio).m4a"
+[Metadata] Adding metadata to "downloads/Eternxlkz - SOBE A MÃO (Official Audio)/Eternxlkz - SOBE A MÃO (Official Audio).m4a"
