@@ -1,17 +1,17 @@
-[youtube] Extracting URL: https://youtu.be/CB2_qBzSft8?si=M2jlr1jslFBWA67O
-[youtube] CB2_qBzSft8: Downloading webpage
+[youtube] Extracting URL: https://youtu.be/0RkX1mBIjRA?si=mITi7dnSok_og-Gg
+[youtube] 0RkX1mBIjRA: Downloading webpage
 [youtube] Sleeping 2.0 seconds ...
-[youtube] CB2_qBzSft8: Downloading tv downgraded player API JSON
+[youtube] 0RkX1mBIjRA: Downloading tv downgraded player API JSON
 [youtube] Sleeping 2.0 seconds ...
-[youtube] CB2_qBzSft8: Downloading player 2d01abf7-main
+[youtube] 0RkX1mBIjRA: Downloading player 2d01abf7-main
 [youtube] [jsc:deno] Solving JS challenges using deno
 [youtube] Sleeping 2.0 seconds ...
-[youtube] CB2_qBzSft8: Downloading m3u8 information
-[info] CB2_qBzSft8: Downloading 1 format(s): 140
-[info] Downloading video thumbnail 41 ...
-[info] Writing video thumbnail 41 to: downloads/【English Lyric Video】Creepy Nuts - Otonoke/【English Lyric Video】Creepy Nuts - Otonoke.webp
-[download] Sleeping 10.81 seconds ...
-[download] Destination: downloads/【English Lyric Video】Creepy Nuts - Otonoke/【English Lyric Video】Creepy Nuts - Otonoke.m4a
-[download]   0.0% of    2.89MiB at  838.02KiB/s ETA 00:03[download]   0.1% of    2.89MiB at    1.45MiB/s ETA 00:01[download]   0.2% of    2.89MiB at    1.79MiB/s ETA 00:01[download]   0.5% of    2.89MiB at    1.90MiB/s ETA 00:01[download]   1.0% of    2.89MiB at    1.94MiB/s ETA 00:01[download]   2.1% of    2.89MiB at    1.97MiB/s ETA 00:01[download]   4.3% of    2.89MiB at    1.98MiB/s ETA 00:01[download]   8.6% of    2.89MiB at    1.81MiB/s ETA 00:01[download]  17.3% of    2.89MiB at    1.87MiB/s ETA 00:01[download]  34.6% of    2.89MiB at    1.89MiB/s ETA 00:00[download]  69.3% of    2.89MiB at    1.92MiB/s ETA 00:00[download] 100.0% of    2.89MiB at    2.00MiB/s ETA 00:00[download] 100% of    2.89MiB in 00:00:01 at 1.90MiB/s   
-[FixupM4a] Correcting container of "downloads/【English Lyric Video】Creepy Nuts - Otonoke/【English Lyric Video】Creepy Nuts - Otonoke.m4a"
-[Metadata] Adding metadata to "downloads/【English Lyric Video】Creepy Nuts - Otonoke/【English Lyric Video】Creepy Nuts - Otonoke.m4a"
+[youtube] 0RkX1mBIjRA: Downloading m3u8 information
+[info] 0RkX1mBIjRA: Downloading 1 format(s): 140
+[info] Downloading video thumbnail 44 ...
+[info] Writing video thumbnail 44 to: downloads/TAIDADA/TAIDADA.webp
+[download] Sleeping 14.15 seconds ...
+[download] Destination: downloads/TAIDADA/TAIDADA.m4a
+[download]   0.0% of    3.49MiB at  133.31KiB/s ETA 00:26[download]   0.1% of    3.49MiB at  377.32KiB/s ETA 00:09[download]   0.2% of    3.49MiB at  849.12KiB/s ETA 00:04[download]   0.4% of    3.49MiB at    1.72MiB/s ETA 00:02[download]   0.9% of    3.49MiB at  450.48KiB/s ETA 00:07[download]   1.8% of    3.49MiB at  582.89KiB/s ETA 00:06[download]   3.6% of    3.49MiB at  796.39KiB/s ETA 00:04[download]   7.1% of    3.49MiB at    1.13MiB/s ETA 00:02[download]  14.3% of    3.49MiB at    1.50MiB/s ETA 00:01[download]  28.6% of    3.49MiB at    1.76MiB/s ETA 00:01[download]  57.3% of    3.49MiB at    1.81MiB/s ETA 00:00[download] 100.0% of    3.49MiB at    1.92MiB/s ETA 00:00[download] 100% of    3.49MiB in 00:00:02 at 1.71MiB/s   
+[FixupM4a] Correcting container of "downloads/TAIDADA/TAIDADA.m4a"
+[Metadata] Adding metadata to "downloads/TAIDADA/TAIDADA.m4a"
