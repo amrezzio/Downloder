@@ -414,7 +414,7 @@ No user sessions are running outdated binaries.
 No VM guests are running outdated hypervisor (qemu) binaries on this host.
 === Installing yt-dlp ===
 === Installing Deno ===
-##################################                                        48.1%######################################################################## 100.0%
+###########                                                               16.4%#####################################                                     52.3%################################################                          67.8%#########################################################                 79.7%##################################################################        92.3%######################################################################## 100.0%
 Archive:  /usr/local/bin/deno.zip
   inflating: /usr/local/bin/deno     
 Deno was installed successfully to /usr/local/bin/deno
